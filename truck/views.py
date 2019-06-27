@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import datetime
-from models import Trip
+from .models import Trip, Truck
 
 
 def index(request):
@@ -47,4 +47,27 @@ def new_trip(request):
         #return render()
 
     else:
-        #retun render()
+        return HttpRespnse("You are at New Trip Page")
+
+def update_trip(request):
+    if request.method == "POST":
+        truck = request.POST.get("truck")
+        expense = request.POST.get("expense")
+        comment = request.POST.get("comment")
+        trip_end_date = request.POST.get("trip_end_date")
+        trip_end_time = request.POST.get("trip_end_time")
+        if expense:
+            t = Trip.objects.filter(truck=truck, trip_complete=False)
+            exp = t.expense+expense
+            comm = t.comment+'/n'+comment
+            Trip.objects.filter(truck=truck, trip_complete=False).update(expense=exp, comment=comm)
+        if trip_end_date and trip_end_time:
+            Trip.objects.filter(truck=truck, trip_complete=False).update(trip_end_date=trip_end_date, trip_end_time=trip_end_time, trip_complete = True)
+
+    else:
+        return HttpResponse("You are at Update Trip page")
+
+
+def show_trucks(request):
+    trucks = Truck. objects.all()
+    return render(request, "trucks.html", {"trucks":trucks})

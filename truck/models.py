@@ -9,7 +9,7 @@ class Truck(models.Model):
 
 
 class Trip(models.Model):
-    truck = models.ForeignKey(Truck, on_delete=models.CASCADE, related_name='truck')
+    truck = models.ForeignKey(Truck, on_delete=models.PROTECT, related_name='truck')
     trip_start_date = models.DateField(blank=False, null=False)
     trip_start_time = models.TimeField(blank=True, null=True)
     trip_end_date = models.DateField(blank=True, null=True)
@@ -24,6 +24,7 @@ class Trip(models.Model):
     cost_per_ton = models.FloatField(blank=True, null=True)
     total_cost = models.FloatField(blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
+    expense = models.BigIntegerField(blank=True, null=True)
 
     def __str__(self):
         show = str(self.truck)+'|'+str(self.trip_start_date)+'|'+str(self.trip_start_time)
