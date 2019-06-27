@@ -1,0 +1,361 @@
+
+/** GLOBAL CLASSES **/
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #535353;
+}
+
+.img-fluid {
+    max-width: 100% !important;
+    height: auto;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+
+
+/** Login 5 start **/
+.login-5{
+    min-height: 100vh;
+    position: relative;
+    text-align: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.bg-grea-5{
+    background: #797e8a;
+}
+
+.login-5 .login-box{
+    max-width: 800px;
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    margin: 0 auto;
+}
+
+.login-5 .login-inner-form {
+    color: #717171;
+    text-align: center;
+}
+
+.login-5 .login-inner-form p{
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.login-5 .col-pad-0{
+    padding: 0;
+}
+
+.login-5 .login-inner-form .details p a{
+    margin-left: 3px;
+    color: #717171;
+}
+
+.login-5 .login-inner-form .details {
+    padding:30px 80px;
+}
+
+.login-5 .bg-img {
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    padding: 100px 30px;
+    z-index: 999;
+    background-color: #000;
+    background-size: cover;
+    top: 0;
+    opacity: 1;
+}
+
+.login-5 .btn-outline {
+    border-radius: 50px;
+    padding: 10px 50px 8px 50px;
+    color: #fff;
+    border: solid 1px #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.login-5 .none-2{
+    display: none;
+}
+
+.login-5 .btn-outline:hover{
+    background: #fff;
+    text-decoration: none;
+    color: #f0151f;
+}
+
+.login-5 .login-inner-form h3 {
+    margin: 0 0 25px;
+    font-size: 22px;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+    color: #717171;
+}
+
+.login-5 .login-inner-form .form-group {
+    margin-bottom: 20px;
+}
+
+.login-5 .login-inner-form .input-text {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: 1px solid #eff0f2;
+    background: #eff0f2;
+    outline: none;
+    color: #717171;
+    border-radius: 3px;
+    height: 40px;
+}
+
+.login-5 .login-inner-form .btn-md {
+    cursor: pointer;
+    padding: 10px 50px 8px 50px;
+    letter-spacing: 1px;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 50px;
+    text-transform: uppercase;
+}
+
+.login-5 .bg-img .social-list li {
+    display: inline-block;
+    font-size: 16px;
+}
+
+.login-5 .bg-img h3{
+    font-size: 27px;
+    color: #fbfbfb;
+    margin-bottom: 20px;
+}
+
+.login-5 .bg-img .logo{
+    height: 30px;
+    margin-bottom: 15px;
+}
+
+.login-5 .bg-img p{
+    font-size: 16px;
+    color: #fbfbfb;
+    margin-bottom: 37px;
+}
+
+.login-5 .bg-img .btn-sm{
+    padding: 6px 20px 6px 20px;
+    font-size: 13px;
+}
+
+.login-5 .bg-img .social-list{
+    margin: 35px 0 0 0;
+    padding: 0;
+}
+
+.login-5 .bg-img .social-list li a {
+    margin: 0 3px;
+    font-size: 15px;
+    width: 35px;
+    height: 35px;
+    border-radius: 3px;
+    display: inline-block;
+    text-align: center;
+    line-height: 35px;
+}
+
+.login-5 .login-inner-form input[type=checkbox], input[type=radio] {
+    margin-right: 3px;
+}
+
+.login-5 .login-inner-form button:focus {
+    outline: none;
+    outline: 0 auto -webkit-focus-ring-color;
+}
+
+.login-5 .login-inner-form .btn-theme.focus, .btn-theme:focus {
+    box-shadow: none;
+}
+
+.login-5 .login-inner-form .btn-theme {
+    background: #f0151f;
+    border: none;
+    color: #fff;
+}
+
+.login-5 .login-inner-form .btn-theme:hover {
+    background: #dc141d;
+}
+
+.login-5 .login-inner-form .terms{
+    margin-left: 3px;
+}
+
+.login-5 .login-inner-form .checkbox {
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.login-5 .login-inner-form .form-check{
+    float: left;
+    margin-bottom: 0;
+}
+
+.login-5 .login-inner-form .form-check a {
+    color: #717171;
+    float: right;
+}
+
+.login-5 .login-inner-form .form-check-input {
+    position: absolute;
+    margin-left: 0;
+}
+
+.login-5 .login-inner-form .form-check label::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    margin-left: -25px;
+    border: 1px solid #eff0f2;
+    border-radius: 3px;
+    background-color: #eff0f2;
+}
+
+.login-5 .login-inner-form .form-check-label {
+    padding-left: 25px;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.login-5 .login-inner-form .checkbox-theme input[type="checkbox"]:checked + label::before {
+    background-color: #f0151f;
+    border-color: #f0151f;
+}
+
+.login-5 .login-inner-form input[type=checkbox]:checked + label:before {
+    font-weight: 300;
+    color: #f3f3f3;
+    line-height: 15px;
+    font-size: 14px;
+    content: "\2713";
+}
+
+.login-5 .login-inner-form input[type=checkbox], input[type=radio] {
+    margin-top: 4px;
+}
+
+.login-5 .login-inner-form .checkbox a {
+    font-size: 14px;
+    color: #717171;
+    float: right;
+}
+
+/** Social media **/
+.login-5 .facebook-bg {
+    background: #4867aa;
+    color: #fff;
+}
+
+.login-5 .facebook-bg:hover {
+    background: #3b589e;
+    color: #fff;
+}
+
+.login-5 .twitter-bg {
+    background: #33CCFF;
+    color: #fff;
+}
+
+.login-5 .twitter-bg:hover {
+    background: #56d7fe;
+    color: #fff;
+}
+
+.login-5 .google-bg {
+    background: #db4437;
+    color: #fff;
+}
+
+.login-5 .google-bg:hover {
+    background: #dc4e41;
+    color: #fff;
+}
+
+.login-5 .linkedin-bg {
+    background: #0177b5;
+    color: #fff;
+}
+
+.login-5 .linkedin-bg:hover {
+    background: #1c82ca;
+    color: #fff;
+}
+
+/** MEDIA **/
+@media (max-width: 992px) {
+    .login-box{
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .login-5 .login-inner-form .details {
+        padding: 30px;
+    }
+
+    .login-5 .login-box {
+        max-width: 400px;
+    }
+
+    .login-5 .btn-theme{
+        display: block;
+        width: 100%;
+    }
+
+    .login-5 .none-2 {
+        display: block;
+    }
+
+    .none-992{
+        display: none;
+    }
+
+    .login-5 {
+        padding: 30px 0;
+    }
+}
+/** Login 5 end **/
+
+
+
+/** MEDIA **/
+@media (max-width: 1200px) {  }
+
+@media (max-width: 992px) {  }
+
+@media (max-width: 768px) {  }
+
+@media (max-width: 580px) {  }
+
+@media (min-width: 991px) {  }
+
+@media (min-width: 991px) and (max-width: 1200px) {  }
