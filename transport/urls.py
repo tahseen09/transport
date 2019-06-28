@@ -19,5 +19,7 @@ from truck import views
 
 urlpatterns = [
     path('',views.dashboard, name="dashboard"),
+    path('new',views.new_trip, name="new"),
+    path('update',views.update_trip, name="update"),
     path('admin/', admin.site.urls),
 ]
