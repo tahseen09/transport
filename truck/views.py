@@ -24,8 +24,9 @@ def dashboard(request):
             road = Trip.objects.all().filter(truck = truck)
 
     else:
-       road = Truck.objects.all().filter(trip_complete = False)
+       road = Trip.objects.all().filter(trip_complete = False)
        context = {"road":road}
+    return render(request, "dashboard.html", context)
 
 
 def new_trip(request):
@@ -59,7 +60,7 @@ def update_trip(request):
         if expense:
             t = Trip.objects.filter(truck=truck, trip_complete=False)
             exp = t.expense+expense
-            comm = t.comment+'/n'+comment
+            comm = t.comment+'\n'+comment
             Trip.objects.filter(truck=truck, trip_complete=False).update(expense=exp, comment=comm)
         if trip_end_date and trip_end_time:
             Trip.objects.filter(truck=truck, trip_complete=False).update(trip_end_date=trip_end_date, trip_end_time=trip_end_time, trip_complete = True)

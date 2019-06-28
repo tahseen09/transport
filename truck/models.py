@@ -23,8 +23,8 @@ class Trip(models.Model):
     weight = models.FloatField(blank=True, null=True)
     cost_per_ton = models.FloatField(blank=True, null=True)
     total_cost = models.FloatField(blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    expense = models.BigIntegerField(blank=True, null=True)
+    comment = models.TextField(default="Trip Started:",blank=True, null=True)
+    expense = models.BigIntegerField(default=0,blank=True, null=True)
 
     def __str__(self):
         show = str(self.truck)+'|'+str(self.trip_start_date)+'|'+str(self.trip_start_time)

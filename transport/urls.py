@@ -18,6 +18,6 @@ from django.urls import path
 from truck import views
 
 urlpatterns = [
-    path('',views.show_trucks, name="show"),
+    path('',views.dashboard, name="dashboard"),
     path('admin/', admin.site.urls),
 ]
