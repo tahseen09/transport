@@ -42,7 +42,7 @@
 				<div class="fill-one"></div>
 			</button></a>
 			<p>&nbsp;&nbsp;&nbsp;</p>
-			<a href="{% url 'accounts/logout' %}"><button class="btn btn-special">
+			<a href="{% url 'logout' %}"><button class="btn btn-special">
 				LOGOUT
 				<div class="fill-one"></div>
 			</button></a>
@@ -94,6 +94,7 @@
 										<th class="cell100 column2">Start Date</th>
 										<th class="cell100 column6">Weight</th>
 										<th class="cell100 column7">Total Cost</th>
+										<th class="cell100 column7">Expenses</th>										
 										<th class="cell100 column3">Driver</th>
 										<th class="cell100 column4">Source</th>
 										<th class="cell100 column8">Destination</th>
@@ -107,6 +108,7 @@
 										<td class="cell100 column2">{{r.trip_start_date}}</td>
 										<td class="cell100 column3">{{r.weight}}</td>
 										<td class="cell100 column4">{{r.total_cost}}</td>
+										<td class="cell100 column4">{{r.expense}}</td>
 										<td class="cell100 column5">{{r.driver}}</td>
 										<td class="cell100 column6">{{r.source}}</td>
 										<td class="cell100 column7">{{r.destination}}</td>

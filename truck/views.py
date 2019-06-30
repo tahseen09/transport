@@ -51,7 +51,10 @@ def dashboard(request):
 
     else:
         road = Trip.objects.all().filter(trip_complete = False)
-        context = {"road":road}
+        for r in road:
+            total_sale = total_sale+r.total_cost
+            total_expense = total_expense+r.expense
+        context = {"road":road, "total_sale":total_sale, "total_expense":total_expense}
         return render(request, "dashboard.html", context)
 
 @login_required
@@ -87,7 +90,7 @@ def new_trip(request):
             context = {"msg":msg}
             return render(request, "new.html", context)
         #save the data
-        t = Trip(truck=truck, trip_start_date=trip_start_date, trip_start_time=trip_start_time, source=source, destination=destination, driver=driver, item=item, consignee=consignee, weight=weight, cost_per_ton=cost, total_cost=total_cost, comment=comment, expense=expense)
+        t = Trip(truck=truck.upper(), trip_start_date=trip_start_date, trip_start_time=trip_start_time, source=source, destination=destination, driver=driver, item=item, consignee=consignee, weight=weight, cost_per_ton=cost, total_cost=total_cost, comment=comment, expense=expense)
         t.save()
         msg = "Your new trip has been created"
         context = {"msg":msg}
@@ -105,12 +108,14 @@ def update_trip(request):
         comment = request.POST.get("comment")
         trip_end_date = request.POST.get("trip_end_date")
         trip_end_time = request.POST.get("trip_end_time")
-        t = Trip.objects.filter(truck=truck, trip_complete=False).exists()
-        if not t:
+        if not Trip.objects.filter(truck=truck, trip_complete=False).exists():
             msg = "The truck with number:"+truck+" is not taking any trip right now."
             context = {"msg":msg}
             return render(request,"update.html",context)
-        if expense:
+        t = Trip.objects.filter(truck=truck, trip_complete=False)
+        if expense and ('.' not in expense):
+            expense = int(expense)*1.0
+            print(expense)
             exp = t[0].expense+float(expense)
         if comment:
             comm = t[0].comment+'\n'+comment
