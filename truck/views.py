@@ -16,7 +16,7 @@ def dashboard(request):
         truck = request.POST.get("truck")
         if start_date and end_date:
             if truck:
-                road = Trip.objects.all().filter(trip_start_date__gte = start_date, trip_start_date__lte = end_date, truck = truck)
+                road = Trip.objects.all().filter(trip_start_date__gte = start_date, trip_start_date__lte = end_date, truck__iexact = truck)
                 context = {"road":road}
                 return render(request, "detail.html", context)
             else:
@@ -25,9 +25,9 @@ def dashboard(request):
                 return render(request, "dashboard.html", context)
         if start_date:
             if truck:
-                road = Trip.objects.all().filter(trip_start_date__gte = start_date, truck = truck)
+                road = Trip.objects.all().filter(trip_start_date__gte=start_date, truck__iexact=truck)
             else:
-                road = Trip.objects.all().filter(trip_start_date__gte = start_date)
+                road = Trip.objects.all().filter(trip_start_date__gte=start_date)
             context = {"road":road}
             return render(request, "dashboard.html", context)
 
@@ -40,7 +40,7 @@ def dashboard(request):
             return render(request, "dashboard.html", context)
 
         if truck:
-            road = Trip.objects.all().filter(truck = truck)
+            road = Trip.objects.all().filter(truck__iexact=truck)
             context = {"road":road}
             return render(request,"dashboard.html",context)
             
@@ -52,6 +52,7 @@ def dashboard(request):
 
 
 def new_trip(request):
+    expense = 0.0
     if request.method == "POST":
         truck = request.POST.get("truck")
         trip_start_date = request.POST.get("trip_start_date")
@@ -65,39 +66,47 @@ def new_trip(request):
         cost = request.POST.get("cost")
         comment = request.POST.get("comment")
         expense = request.POST.get("expense")
-        if expense:
-            expense = float(expense)
-        else:
-            expense = 0.0
         weight = float(weight)
         cost = float(cost)
         total_cost = weight*cost
-
+        if Trip.objects.all().filter(truck__iexact=truck, trip_complete=False).exists():
+            msg = "The truck with truck number:"+truck+" has not completed it's previous trip. Please update the details if required."
+            context = {"msg":msg}
+            return render(request, "new.html", context)
         #save the data
-        t = Trip(truck=truck, trip_start_date=trip_start_date, trip_start_time=trip_start_time, source=source, destination=destination, driver=driver, item=item, consignee=consignee, weight=weight, cost_per_ton=cost, total_cost=total_cost, comment=comment, expense=expense)
+        t = Trip(truck__iexact=truck, trip_start_date=trip_start_date, trip_start_time=trip_start_time, source=source, destination=destination, driver=driver, item=item, consignee=consignee, weight=weight, cost_per_ton=cost, total_cost=total_cost, comment=comment, expense=expense)
         t.save()
-
         return redirect('dashboard')
-
     else:
         return render(request,"new.html")
 
+
 def update_trip(request):
+    exp = 0.00
+    comm = ""
     if request.method == "POST":
         truck = request.POST.get("truck")
-        print(truck)
         expense = request.POST.get("expense")
         comment = request.POST.get("comment")
         trip_end_date = request.POST.get("trip_end_date")
         trip_end_time = request.POST.get("trip_end_time")
+        t = Trip.objects.filter(truck__iexact=truck, trip_complete=False)
+        if not t:
+            msg = "The truck with number:"+truck+" is not taking any trip right now."
+            context = {"msg":msg}
+            return render(request,"update.html",context)
         if expense:
-            t = Trip.objects.filter(truck=truck, trip_complete=False)
-            print(t)
             exp = t[0].expense+float(expense)
+        if comment:
             comm = t[0].comment+'\n'+comment
-            Trip.objects.filter(truck=truck, trip_complete=False).update(expense=exp, comment=comm)
-        if trip_end_date and trip_end_time:
-            Trip.objects.filter(truck=truck, trip_complete=False).update(trip_end_date=trip_end_date, trip_end_time=trip_end_time, trip_complete = True)
-        return redirect('dashboard')
+            Trip.objects.filter(truck__iexact=truck, trip_complete=False).update(expense=exp, comment=comm)
+        if trip_end_date:
+            if trip_end_time:
+                Trip.objects.filter(truck__iexact=truck, trip_complete=False).update(trip_end_date=trip_end_date, trip_end_time=trip_end_time, trip_complete = True)
+            else:
+                Trip.objects.filter(truck__iexact=truck, trip_complete=False).update(trip_end_date=trip_end_date, trip_complete = True)
+        msg = "Trip details updated"
+        context = {"msg":msg}
+        return render(request,"update.html",context)
     else:
         return render(request,"update.html")

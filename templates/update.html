@@ -62,6 +62,10 @@
                                 <button type="submit" class="btn-md btn-theme">SAVE</button>
                             </div>
                         </form>
+
+                        {% if msg %}
+                            <p>{{msg}}</p>
+                        {% endif %}
                         
                     </div>
                 </div>
