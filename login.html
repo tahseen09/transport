@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html >
+   <head>
+      <!-- Basic Page Needs
+         ================================================== -->
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="msapplication-TileColor" content="#000">
+      <meta name="theme-color" content="#000">
+      <!-- Mobile Specific Metas
+         ================================================== -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- For Search Engine Meta Data  -->
+      <meta name="description" content="" />
+      <meta name="keywords" content="" />
+      <title>BABA GORA TRNASPORT</title>
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="" />
+      <!-- Main structure css file -->
+      <link  rel="stylesheet" href="{% static 'login/css/style.css' %}">
+   </head>
+   <body>
+      <!-- Start Preloader --
+         <div id="preload-block">
+           <div class="square-block"></div>
+         </div>
+         <!-- Preloader End -->
+      <div class="container-fluid">
+         <div class="row">
+            <div class="authfy-container col-xs-12 col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">
+               <div class="col-sm-5 authfy-panel-left">
+                  <div class="brand-col">
+                     <div class="headline">
+                        <!-- brand-logo start -->
+                        <div class="brand-logo">
+                           <h2>BABA GORA TRANSPORT</h2>
+                        </div>
+                        <!-- ./brand-logo -->
+                        <!-- social login buttons start -->
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-7 authfy-panel-right">
+                  <!-- authfy-login start -->
+                  <div class="authfy-login">
+                     <!-- panel-login start -->
+                     <div class="authfy-panel panel-login text-center active">
+                        <div class="authfy-heading">
+                           <h3 class="auth-title">Login</h3>
+                        </div>
+                        <div class="row">
+                           <div class="col-xs-12 col-sm-12">
+                              <form name="loginForm" class="loginForm" action="#" method="POST">
+                                 <div class="form-group">
+                                    <input type="text" class="form-control text" name="username" placeholder="User name">
+                                 </div>
+                                 <div class="form-group">
+                                    <div class="pwdMask">
+                                       <input type="password" class="form-control password" name="password" placeholder="Password">
+                                       <span class="fa fa-eye-slash pwd-toggle"></span>
+                                    </div>
+                                 </div>
+                                 <!-- start remember-row -->
+                                 <div class="row remember-row">
+                                    <div class="col-xs-6 col-sm-6">
+                                       <label class="checkbox text-left">
+                                       <input type="checkbox" value="remember-me">
+                                       <span class="label-text">Remember me</span>
+                                       </label>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6">
+                                       <p class="forgotPwd">
+                                          <a class="lnk-toggler" data-panel=".panel-forgot" href="#">Forgot password?</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                                 <!-- ./remember-row -->
+                                 <div class="form-group">
+                                    <!--
+                                       <button class="btn btn-lg btn-primary btn-block" href="./home.html">Login</button>-->
+                                    <button><a href="home.html">LOGIN</a></button>
+                                 </div>
+                              </form>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- ./panel-login -->
+                  </div>
+                  <!-- ./authfy-login -->
+               </div>
+            </div>
+         </div>
+         <!-- ./row -->
+      </div>
+      <!-- ./container -->
+      <!-- Javascript Files -->
+      <!-- initialize jQuery Library -->
+      <script src="{% static 'js/jquery-2.2.4.min.js' %}"></script>
+      <!-- for Bootstrap js -->
+      <script src="{% static 'js/bootstrap.min.js' %}"></script>
+      <!-- Custom js-->
+      <script src="{% static 'js/custom.js' %}"></script>
+   </body>
+</html>
