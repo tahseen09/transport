@@ -52,11 +52,11 @@
 			<div class="wrap-table100">
 		<form style="color: white;" method="POST" action="">
 				{% csrf_token %}
-				TRUCK NUMBER: {% if truck %}{{truck}}{% endif %}<input type="text" name="truck" placeholder="TRUCK-NUMBER" style="text-transform: uppercase;">
+				TRUCK NUMBER: {% if truck %}{{truck}}{% endif %}<input type="text" name="truck" placeholder="TRUCK-NUMBER" style="text-transform: uppercase;  width: 200px; height: 60px; border-radius: 5px; text-align: center;">
 				<br>
-				Start DATE: {% if start_date %}{{start_date}}{% endif %} <input type="date" name="startdate" placeholder="YYYY-MM-DD">
+				Start DATE: {% if start_date %}{{start_date}}{% endif %} <input type="date" name="startdate" placeholder="YYYY-MM-DD" style=" width: 200px; height: 60px; border-radius: 5px; text-align: center;">
 				<br>
-				End DATE: {% if end_date %}{{end_date}}{% endif %}<input type="date" name="enddate" placeholder="YYYY-MM-DD">
+				End DATE: {% if end_date %}{{end_date}}{% endif %}<input type="date" name="enddate" placeholder="YYYY-MM-DD" style=" width: 200px; height: 60px; border-radius: 5px; text-align: center;">
 				<br>
 				<button class="btn btn-special" type="submit">
 				SEARCH
