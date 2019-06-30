@@ -23,7 +23,18 @@
                     <h3>TRANSPORT</h3>
                 </hgroup>
                                 
-               
+               <a href="{% url 'dashboard' %}"><button class="btn btn-special">
+               DASHBOARD
+                <div class="fill-one"></div>
+            </button></a>
+                <a href="{% url 'new' %}"><button class="btn btn-special">
+               NEW TRIP
+                <div class="fill-one"></div>
+            </button></a>
+             <a href="{% url 'update' %}"><button class="btn btn-special">
+               UPDATE TRIP
+                <div class="fill-one"></div>
+            </button></a>
             
             </header>
             
@@ -54,7 +65,7 @@
                         <li style="font-size: 20px; letter-spacing: 2px;">Expenses : {{r.expense}}</li><br>
                         <li style="font-size: 20px; letter-spacing: 2px;">Comment : {{r.comment}}</li><br>
                         <li style="font-size: 20px; letter-spacing: 2px;">Trip Completed Date : {{r.trip_end_date}}</li><br>
-                        <li style="font-size: 20px; letter-spacing: 2px;">Trip Completed Date : {{r.trip_end_time}}</li><br>    
+                        <li style="font-size: 20px; letter-spacing: 2px;">Trip Completed Time : {{r.trip_end_time}}</li><br>    
                         </p>
                     <br><br>
                     </div>
