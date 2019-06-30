@@ -38,6 +38,8 @@
                 <h3>BABA GORA TRANSPORT</h3>
                 
                 <a href="{% url 'update' %}" class="btn-outline">UPDATE TRIP</a>
+                <p>&nbsp;</p>
+                 <a href="{% url 'dashboard' %}" class="btn-outline">HOME</a>
                 
             </div>
             <div class="col-lg-7 col-md-12 col-pad-0 align-self-center">
@@ -47,40 +49,40 @@
                         <form action="" method="POST">
                             {% csrf_token %}
                             <div class="form-group">
-                                <input type="text" name="truck" class="input-text" placeholder="TRUCK NUMBER" style="text-transform: uppercase;">
+                                <input type="text" name="truck" class="input-text" placeholder="TRUCK NUMBER" required style="text-transform: uppercase;">
                             </div>
                              <div class="form-group">
-                                <input type="date" name="trip_start_date" class="input-text" placeholder="TRIP START DATE">
+                                <input type="date" name="trip_start_date" class="input-text" placeholder="TRIP START DATE" required>
                             </div>
                              <div class="form-group">
-                                <input type="time" name="trip_start_time" class="input-text" placeholder="TRIP START TIME">
+                                <input type="time" name="trip_start_time" class="input-text" placeholder="TRIP START TIME" required>
                             </div>
                              <div class="form-group">
-                                <input type="text" name="source" class="input-text" placeholder="FROM">
+                                <input type="text" name="source" class="input-text" placeholder="FROM" style="text-transform: uppercase;" required>
                             </div>
                              <div class="form-group">
-                                <input type="text" name="destination" class="input-text" placeholder="TO">
+                                <input type="text" name="destination" class="input-text" placeholder="TO" style="text-transform: uppercase;" required>
                             </div>
                              <div class="form-group">
-                                <input type="text" name="driver" class="input-text" placeholder="DRIVER NAME">
+                                <input type="text" name="driver" class="input-text" placeholder="DRIVER NAME" style="text-transform: uppercase;">
                             </div>
                              <div class="form-group">
-                                <input type="text" name="item" class="input-text" placeholder="ITEM">
+                                <input type="text" name="item" class="input-text" placeholder="ITEM" style="text-transform: uppercase;">
                             </div>
                              <div class="form-group">
-                                <input type="text" name="consignee" class="input-text" placeholder="CONSIGNEE">
+                                <input type="text" name="consignee" class="input-text" placeholder="CONSIGNEE" style="text-transform: uppercase;">
                             </div>
                              <div class="form-group">
-                                <input type="number" step="0.01" name="weight" class="input-text" placeholder="TOTAL WEIGHT">
+                                <input type="number" step="0.01" name="weight" class="input-text" placeholder="TOTAL WEIGHT" required style="text-transform: uppercase;">
                             </div>
                              <div class="form-group">
-                                <input type="number" step="0.01" name="cost" class="input-text" placeholder="COST/TON">
+                                <input type="number" step="0.01" name="cost" class="input-text" placeholder="COST/TON" style="text-transform: uppercase;">
                             </div>
                             <div class="form-group">
-                                <input type="text" name="comment" class="input-text" placeholder="Comments">
+                                <input type="text" name="comment" class="input-text" placeholder="Comments" style="text-transform: uppercase;">
                             </div>
                             <div class="form-group">
-                                <input type="number" step="0.01" name="expense" class="input-text" placeholder="EXTRA EXPENSES">
+                                <input type="number" step="0.01" name="expense" class="input-text" placeholder="EXTRA EXPENSES" style="text-transform: uppercase;">
                             </div>
                           
                             <div class="form-group">
