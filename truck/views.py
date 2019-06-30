@@ -56,7 +56,6 @@ def dashboard(request):
 
 @login_required
 def new_trip(request):
-    expense = 0.0
     if request.method == "POST":
         truck = request.POST.get("truck")
         trip_start_date = request.POST.get("trip_start_date")
@@ -71,23 +70,27 @@ def new_trip(request):
         comment = request.POST.get("comment")
         expense = request.POST.get("expense")
 
-        if '.' not in weight:
+        if weight and ('.' not in weight):
             weight = int(weight)*1.0
-        if '.' not in cost:
+        if cost and ('.' not in cost):
             cost = int(cost)*1.0
-        if '.' not in expense:
+        if expense and ('.' not in expense):
             expense = int(expense)*1.0
+        else:
+            expense = 0.0
+        weight = float(weight)
+        cost = float(cost)
+        total_cost = float(weight)*float(cost)
 
-        total_cost = weight*cost
-        
         if Trip.objects.all().filter(truck=truck, trip_complete=False).exists():
-            msg = "The truck with truck number:"+truck+" has not completed it's previous trip. Please update the details if required."
+            msg = "The truck with truck number:"+truck.upper()+" has not completed it's previous trip. Please update the details if required."
             context = {"msg":msg}
             return render(request, "new.html", context)
         #save the data
         t = Trip(truck=truck, trip_start_date=trip_start_date, trip_start_time=trip_start_time, source=source, destination=destination, driver=driver, item=item, consignee=consignee, weight=weight, cost_per_ton=cost, total_cost=total_cost, comment=comment, expense=expense)
         t.save()
         msg = "Your new trip has been created"
+        context = {"msg":msg}
         return render(request,"new.html",context)
     else:
         return render(request,"new.html")
