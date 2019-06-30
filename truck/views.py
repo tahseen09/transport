@@ -11,6 +11,8 @@ def index(request):
 @login_required
 def dashboard(request):
     road = None
+    total_sale = 0.0
+    total_expense = 0.0
     if request.method == "POST":
         start_date = request.POST.get("startdate")
         end_date = request.POST.get("enddate")
@@ -18,33 +20,34 @@ def dashboard(request):
         if start_date and end_date:
             if truck:
                 road = Trip.objects.all().filter(trip_start_date__gte = start_date, trip_start_date__lte = end_date, truck = truck)
-                context = {"road":road}
+                for r in road:
+                    total_sale = total_sale+r.total_cost
+                    total_expense = total_expense+r.expense
+                context = {"road":road, "total_sale":total_sale, "total_expense":total_expense}
                 return render(request, "detail.html", context)
             else:
                 road = Trip.objects.all().filter(trip_start_date__gte = start_date, trip_start_date__lte = end_date)
-                context = {"road":road}
-                return render(request, "dashboard.html", context)
+        
         if start_date:
             if truck:
                 road = Trip.objects.all().filter(trip_start_date__gte=start_date, truck=truck)
             else:
                 road = Trip.objects.all().filter(trip_start_date__gte=start_date)
-            context = {"road":road}
-            return render(request, "dashboard.html", context)
 
         if end_date:
             if truck:
                 road = Trip.objects.all().filter(trip_start_date__lte = end_date, truck = truck)
             else:
                 road = Trip.objects.all().filter(trip_start_date__lte = end_date)
-            context = {"road":road}
-            return render(request, "dashboard.html", context)
-
+    
         if truck:
             road = Trip.objects.all().filter(truck=truck)
-            context = {"road":road}
-            return render(request,"dashboard.html",context)
-            
+        
+        for r in road:
+            total_sale = total_sale+r.total_cost
+            total_expense = total_expense+r.expense
+        context = {"road":road, "truck":truck, "start_date":start_date, "end_date":end_date, "total_sale":total_sale, "total_expense":total_expense}
+        return render(request,"dashboard.html",context)
 
     else:
         road = Trip.objects.all().filter(trip_complete = False)
@@ -67,9 +70,16 @@ def new_trip(request):
         cost = request.POST.get("cost")
         comment = request.POST.get("comment")
         expense = request.POST.get("expense")
-        weight = float(weight)
-        cost = float(cost)
+
+        if '.' not in weight:
+            weight = int(weight)*1.0
+        if '.' not in cost:
+            cost = int(cost)*1.0
+        if '.' not in expense:
+            expense = int(expense)*1.0
+
         total_cost = weight*cost
+        
         if Trip.objects.all().filter(truck=truck, trip_complete=False).exists():
             msg = "The truck with truck number:"+truck+" has not completed it's previous trip. Please update the details if required."
             context = {"msg":msg}

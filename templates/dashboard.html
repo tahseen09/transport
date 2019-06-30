@@ -47,17 +47,17 @@
 			<div class="wrap-table100">
 		<form style="color: white;" method="POST" action="">
 				{% csrf_token %}
-				TRUCK NUMBER:<input type="text" name="truck" placeholder="TRUCK-NUMBER" style="text-transform: uppercase;">
+				TRUCK NUMBER: {% if truck %}{{truck}}{% endif %}<input type="text" name="truck" placeholder="TRUCK-NUMBER" style="text-transform: uppercase;">
 				<br>
-				Start DATE: <input type="date" name="startdate" placeholder="YYYY-MM-DD">
+				Start DATE: {% if start_date %}{{start_date}}{% endif %} <input type="date" name="startdate" placeholder="YYYY-MM-DD">
 				<br>
-				End DATE: <input type="date" name="enddate" placeholder="YYYY-MM-DD">
+				End DATE: {% if end_date %}{{end_date}}{% endif %}<input type="date" name="enddate" placeholder="YYYY-MM-DD">
 				<br>
-				<button class="btn btn-special">
+				<button class="btn btn-special" type="submit">
 				SEARCH
 				<div class="fill-one"></div>
-			</button>
-			</form>
+				</button>
+		</form>
 			<h1>&nbsp;</h1>
 				<div class="table100 ver1">
 
@@ -111,6 +111,7 @@
 								{% endif %}
 								</tbody>
 							</table>
+						<h2>Total Sale: {{total_sale}} <br> Total Expenses: {{total_expense}} </h2>
 						</div>
 					</div>
 				</div>
