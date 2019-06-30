@@ -33,31 +33,32 @@
                 <div class="line"></div>
                 
                 <article id="article2">
-                    <h2>Truck Number:</h2>
+                {% for r in road %}
+                    <h2>Truck Number: {{r.truck}}</h2>
                     
                     <div class="line"></div>
                     
                     <div class="articleBody clear">
                     	
-                        
                         <p>
-                        <li style="font-size: 18px; letter-spacing: 2px;">Date of Departure :</li><br>
-                        <li style="font-size: 18px; letter-spacing: 2px;">Trip Start Date:</li><br>
-                        <li style="font-size: 18px; letter-spacing: 2px;">Items :</li> <br>
-                        <li style="font-size: 18px; letter-spacing: 2px;">Weight Loaded :</li><br>
-                        <li style="font-size: 18px; letter-spacing: 2px;">Extra Expenses :</li><br>
-                        <li style="font-size: 18px; letter-spacing: 2px;">From :</li> <br>
-                        <li style="font-size: 18px; letter-spacing: 2px;">To :</li><br>
-                        <li style="font-size: 18px; letter-spacing: 2px;">Comment :</li><br>
-                        <li style="font-size: 18px; letter-spacing: 2px;">Driver Name :</li> <br>
-                        <li style="font-size: 18px; letter-spacing: 2px;">Cost/Ton :</li><br>
-                        <li style="font-size: 18px; letter-spacing: 2px;">Total Cost :</li><br>
-                        <li style="font-size: 18px; letter-spacing: 2px;">Consignee :</li> <br>
-                        <li style="font-size: 18px; letter-spacing: 2px;">Expenses :</li><br>
-                        <li style="font-size: 18px; letter-spacing: 2px;">Trip Completed Date :</li>
-                        
-                    </p>
+                        <li style="font-size: 18px; letter-spacing: 2px;">Trip Start Date : {{r.trip_start_date}}</li><br>
+                        <li style="font-size: 18px; letter-spacing: 2px;">Trip Start Time : {{r.trip_start_time}}</li><br>
+                        <li style="font-size: 18px; letter-spacing: 2px;">Item : {{r.item}} </li> <br>
+                        <li style="font-size: 18px; letter-spacing: 2px;">Weight Loaded : {{r.weight}}</li><br>
+                        <li style="font-size: 18px; letter-spacing: 2px;">From : {{r.source}}</li> <br>
+                        <li style="font-size: 18px; letter-spacing: 2px;">To : {{r.destination}}</li><br>
+                        <li style="font-size: 18px; letter-spacing: 2px;">Driver Name : {{r.driver}}</li> <br>
+                        <li style="font-size: 18px; letter-spacing: 2px;">Cost/Ton : {{r.cost_per_ton}}</li><br>
+                        <li style="font-size: 18px; letter-spacing: 2px;">Total Cost : {{r.total_cost}}</li><br>
+                        <li style="font-size: 18px; letter-spacing: 2px;">Consignee : {{r.consignee}}</li> <br>
+                        <li style="font-size: 18px; letter-spacing: 2px;">Expenses : {{r.expense}}</li><br>
+                        <li style="font-size: 18px; letter-spacing: 2px;">Comment : {{r.comment}}</li><br>
+                        <li style="font-size: 18px; letter-spacing: 2px;">Trip Completed Date : {{r.trip_end_date}}</li><br>
+                        <li style="font-size: 18px; letter-spacing: 2px;">Trip Completed Date : {{r.trip_end_time}}</li><br>    
+                        </p>
+                    <br><br>
                     </div>
+                {% endfor %}
                 </article>
             
 

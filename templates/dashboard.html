@@ -45,12 +45,13 @@
 			
 			
 			<div class="wrap-table100">
-<form style="color: white;">
-				TRUCK NUMBER:<input type="text" name="Truck Number" placeholder="TRUCK NUMBER" style="text-transform: uppercase;">
+		<form style="color: white;" method="POST" action="">
+				{% csrf_token %}
+				TRUCK NUMBER:<input type="text" name="truck" placeholder="TRUCK-NUMBER" style="text-transform: uppercase;">
 				<br>
-				DATE: <input type="date" name="YYYY-MM-DD" placeholder="YYYY-MM-DD">
+				Start DATE: <input type="date" name="startdate" placeholder="YYYY-MM-DD">
 				<br>
-	DATE: <input type="date" name="YYYY-MM-DD" placeholder="YYYY-MM-DD">
+				End DATE: <input type="date" name="enddate" placeholder="YYYY-MM-DD">
 				<br>
 				<button class="btn btn-special">
 				SEARCH
@@ -62,20 +63,19 @@
 
 					<div class="table100-firstcol">
 						<table>
-
 							<thead>
 								<tr class="row100 head">
 									<th class="cell100 column1">Truck</th>
 								</tr>
 							</thead>
 							<tbody>
+							{% if road %}
+								{% for r in road %}
 								<tr class="row100 body">
-									<td class="cell100 column1">Brandon Green</td>
+									<td class="cell100 column1">{{r.truck}}</td>
 								</tr>
-
-								<tr class="row100 body">
-									<td class="cell100 column1">Kathy Daniels</td>
-								</tr>
+								{% endfor %}
+							{% endif %}
 
 							</tbody>
 						</table>
@@ -96,26 +96,19 @@
 									</tr>
 								</thead>
 								<tbody>
+								{% if road %}
+									{% for r in road %}
 									<tr class="row100 body">
-										<td class="cell100 column2">CMO</td>
-										<td class="cell100 column3">16 Nov 2012</td>
-										<td class="cell100 column4">16 Nov 2017</td>
-										<td class="cell100 column5">brandon94@example.com</td>
-										<td class="cell100 column6">30</td>
-										<td class="cell100 column7">New York City, NY</td>
-										<td class="cell100 column8">424242xxxxxx6262</td>
+										<td class="cell100 column2">{{r.trip_start_date}}</td>
+										<td class="cell100 column3">{{r.weight}}</td>
+										<td class="cell100 column4">{{r.total_cost}}</td>
+										<td class="cell100 column5">{{r.driver}}</td>
+										<td class="cell100 column6">{{r.source}}</td>
+										<td class="cell100 column7">{{r.destination}}</td>
+										<td class="cell100 column8">{{r.consignee}}</td>
 									</tr>
-
-									<tr class="row100 body">
-										<td class="cell100 column2">Marketing</td>
-										<td class="cell100 column3">16 Nov 2015</td>
-										<td class="cell100 column4">30 Nov 2017</td>
-										<td class="cell100 column5">kathy_82@example.com</td>
-										<td class="cell100 column6">26</td>
-										<td class="cell100 column7">New York City, NY</td>
-										<td class="cell100 column8">424242xxxxxx1616</td>
-									</tr>
-
+									{% endfor %}
+								{% endif %}
 								</tbody>
 							</table>
 						</div>

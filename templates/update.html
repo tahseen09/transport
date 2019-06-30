@@ -40,12 +40,13 @@
                 <div class="login-inner-form">
                     <div class="details">
                         <h3>UPDATE TRIP DETAILS</h3>
-                        <form action="" method="GET">
+                        <form action="" method="POST">
+                            {% csrf_token %}
                             <div class="form-group">
                                 <input type="text" name="truck" class="input-text" placeholder="TRUCK NUMBER">
                             </div>
                               <div class="form-group">
-                                <input type="text" name="expense" class="input-text" placeholder="EXPENSE">
+                                <input type="number" step="0.01" name="expense" class="input-text" placeholder="EXPENSE">
                             </div>
                               <div class="form-group">
                                 <input type="text" name="comment" class="input-text" placeholder="COMMENT">
