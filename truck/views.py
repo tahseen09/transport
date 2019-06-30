@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
 import datetime
 from .models import Trip
 
@@ -77,7 +77,7 @@ def new_trip(request):
         t = Trip(truck=truck, trip_start_date=trip_start_date, trip_start_time=trip_start_time, source=source, destination=destination, driver=driver, item=item, consignee=consignee, weight=weight, cost_per_ton=cost, total_cost=total_cost, comment=comment, expense=expense)
         t.save()
 
-        return HttpResponseRedirect('')
+        return redirect('dashboard')
 
     else:
         return render(request,"new.html")
@@ -98,6 +98,6 @@ def update_trip(request):
             Trip.objects.filter(truck=truck, trip_complete=False).update(expense=exp, comment=comm)
         if trip_end_date and trip_end_time:
             Trip.objects.filter(truck=truck, trip_complete=False).update(trip_end_date=trip_end_date, trip_end_time=trip_end_time, trip_complete = True)
-        return HttpResponseRedirect('')
+        return redirect('dashboard')
     else:
         return render(request,"update.html")
