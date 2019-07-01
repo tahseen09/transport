@@ -72,7 +72,7 @@ def new_trip(request):
         cost = request.POST.get("cost")
         comment = request.POST.get("comment")
         expense = request.POST.get("expense")
-
+        print(weight+' '+expense)
         if weight and ('.' not in weight):
             weight = int(weight)*1.0
         if cost and ('.' not in cost):
@@ -81,9 +81,10 @@ def new_trip(request):
             expense = int(expense)*1.0
         else:
             expense = 0.0
-        weight = float(weight)
-        cost = float(cost)
-        total_cost = float(weight)*float(cost)
+        if weight and cost:
+            weight = float(weight)
+            cost = float(cost)
+            total_cost = float(weight)*float(cost)
 
         if Trip.objects.all().filter(truck=truck, trip_complete=False).exists():
             msg = "The truck with truck number:"+truck+" has not completed it's previous trip. Please update the details if required."
@@ -130,3 +131,6 @@ def update_trip(request):
         return render(request,"update.html",context)
     else:
         return render(request,"update.html")
+
+def expenses(request):
+    return render(request,"expenses.html")

@@ -21,6 +21,7 @@ urlpatterns = [
     path('',views.dashboard, name="dashboard"),
     path('new',views.new_trip, name="new"),
     path('update',views.update_trip, name="update"),
+    path('expenses',views.expenses, name="expenses"),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
