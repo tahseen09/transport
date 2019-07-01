@@ -30,6 +30,7 @@ def dashboard(request):
                 return render(request, "detail.html", context)
             else:
                 road = Trip.objects.all().filter(trip_start_date__gte = start_date, trip_start_date__lte = end_date)
+                expenses = Expenses.objects.all().filter(expense_date__gte = start_date, expense_date__lte = end_date)
         
         if start_date:
             if truck:
@@ -85,7 +86,6 @@ def new_trip(request):
         cost = request.POST.get("cost")
         #comment = request.POST.get("comment")
         #expense = request.POST.get("expense")
-        print(weight+' '+expense)
         if weight and ('.' not in weight):
             weight = int(weight)*1.0
         if cost and ('.' not in cost):
