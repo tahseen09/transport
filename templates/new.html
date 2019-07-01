@@ -2,47 +2,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google Tag Manager -->
-
-    <!-- End Google Tag Manager -->
     <title>BABA GORA TRANSPORT | NEW TRIP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <!-- External CSS libraries -->
     <link type="text/css" rel="stylesheet" href="{% static 'trip/assets/css/bootstrap.min.css' %}">
     <link type="text/css" rel="stylesheet" href="{% static 'trip/assets/fonts/font-awesome/css/font-awesome.min.css' %}">
     <link type="text/css" rel="stylesheet" href="{% static 'trip/assets/fonts/flaticon/font/flaticon.css' %}">
-
-    <!-- Favicon icon -->
-        <link rel="icon" type="image/png" href="{% static 'dash/images/icons/favicon.ico' %}"/>
-
-    <!-- Google fonts -->
+    <link rel="icon" type="image/png" href="{% static 'dash/images/icons/favicon.ico' %}"/>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CPoppins:400,500,700,800,900%7CRoboto:100,300,400,400i,500,700">
-
-    <!-- Custom Stylesheet -->
     <link type="text/css" rel="stylesheet" href="{% static 'trip/assets/css/style.css' %}">
     <link rel="stylesheet" type="text/css" id="style_sheet" href="{% static 'trip/assets/css/skins/default.css' %}">
-
 </head>
 <body id="top" class="bg-grea-5">
-<!-- Google Tag Manager (noscript) -->
-
 <div class="page_loader"></div>
-
-<!-- Login 5 start -->
 <div class="login-5">
     <div class="container">
         <div class="row login-box">
             <div class="col-lg-5 col-md-12 col-pad-0 bg-img none-992">
-                
                 <h3>BABA GORA TRANSPORT</h3>
-                
                 <a href="{% url 'update' %}" class="btn-outline">UPDATE TRIP</a>
                 <p>&nbsp;</p>
                  <a href="{% url 'expenses' %}" class="btn-outline">EXPENSES</a>
                 <p>&nbsp;</p>
                  <a href="{% url 'dashboard' %}" class="btn-outline">HOME</a>
-                
             </div>
             <div class="col-lg-7 col-md-12 col-pad-0 align-self-center">
                 <div class="login-inner-form">
@@ -80,8 +62,6 @@
                              <div class="form-group">
                                 <input type="number" step="0.01" name="cost" class="input-text" placeholder="COST/TON" style="text-transform: uppercase;">
                             </div>
-                            
-                          
                             <div class="form-group">
                                 <button type="submit" class="btn-md btn-theme">SAVE</button>
                             </div>
@@ -95,13 +75,8 @@
         </div>
     </div>
 </div>
-<!-- Login 5 end -->
-
-<!-- External JS libraries -->
 <script src="{% static 'trip/assets/js/jquery-2.2.0.min.js' %}"></script>
 <script src="{% static 'trip/assets/js/popper.min.js' %}"></script>
 <script src="{% static 'trip/assets/js/bootstrap.min.js' %}"></script>
-<!-- Custom JS Script -->
-
 </body>
 </html>

@@ -1,28 +1,18 @@
 {% load static %}
-<!DOCTYPE html> <!-- The new doctype -->
+<!DOCTYPE html>
 <html>
     <head>
-    
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        
         <title>BABA GORA TRANSPORT</title>
-        
         <link rel="stylesheet" type="text/css" href="{% static 'detail/styles.css' %}" />
-        
-       
-        
-    </head>
-    
-    <body>
-    	
+        </head>
+     <body>
     	<section id="page"> 
-    
             <header> 
                 <hgroup>
                     <h1>BABA GORA</h1>
                     <h3>TRANSPORT</h3>
-                </hgroup>
-                                
+                </hgroup>                     
                <a href="{% url 'dashboard' %}"><button class="btn btn-special">
                DASHBOARD
                 <div class="fill-one"></div>
@@ -39,23 +29,16 @@
              EXPENSES
                 <div class="fill-one"></div>
             </button></a>
-            
             </header>
-            
             <section id="articles"> 
-
                 <div class="line"></div> 
                 <div class="line"></div>
-                
                 <article id="article2">
                 {% for r in road %}
                     <h2>Truck Number: {{r.truck}}</h2>
-                    
                     <div class="line"></div>
-                    
                     <div class="articleBody clear">
-                    	
-                        <p>
+                    	<p>
                         <li style="font-size: 20px; letter-spacing: 2px;">Trip Start Date : {{r.trip_start_date}}</li><br>
                         <li style="font-size: 20px; letter-spacing: 2px;">Trip Start Time : {{r.trip_start_time}}</li><br>
                         <li style="font-size: 20px; letter-spacing: 2px;">Item : {{r.item}} </li> <br>
@@ -73,13 +56,10 @@
                     </div>
                 {% endfor %}
                 </article>
-
                 <article id="article2">
                 {% for e in expenses %}
                     <h2>Truck Number: {{e.truck}}</h2>
-                    
                     <div class="line"></div>
-                    
                     <div class="articleBody clear">
                         <p>
                         <li style="font-size: 20px; letter-spacing: 2px;">Expense Date : {{e.expense_date}}</li><br>
@@ -90,33 +70,15 @@
                     </div>
                 {% endfor %}
                 </article>
-
             <h2>Total Sale:{{total_sale}}<br>Total Expense: {{total_expense}}</h2>
-
                 <div class="line"></div>
-                
-
-
             </section>
-
-        <footer> <!-- Marking the footer section -->
-
+        <footer> 
            <div class="line"></div>
-           
-           <p>Copyright 2019 - BABA GORA TRANSPORT</p> <!-- Change the copyright notice -->
-           
-          
-           
-
+           <p>Copyright 2019 - BABA GORA TRANSPORT</p>
         </footer>
-            
-		</section> <!-- Closing the #page section -->
-        
-        <!-- JavaScript Includes -->
-        
+        </section> 
         <script src="{% static 'detail/jquery.min.js' %}"></script>
-       <!--
-        <script src="jquery.scrollTo-1.4.2/jquery.scrollTo-min.js"></script>-->
         <script src="{% static 'detail/script.js' %}"></script>
     </body>
 </html>

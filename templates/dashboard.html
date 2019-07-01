@@ -5,29 +5,20 @@
 	<title>BABA GORA TRANSPORT</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="{% static 'dash/images/icons/favicon.ico' %}"/>
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'dash/vendor/bootstrap/css/bootstrap.min.css' %}">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'dash/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'dash/vendor/animate/animate.css' %}">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'dash/vendor/select2/select2.min.css' %}">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'dash/vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'dash/css/util.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'dash/css/main.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'dash/style.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'dash/font-awesome.min.css' %}">
-<!--===============================================================================================-->
 </head>
 <body>
-	
 	<div class="limiter">
-<h1 style="text-align: center; color: #ffc107; background-color: #000; border:double;"><i class="fa fa-truck" style="font-size:48px;color:#ffc107;"></i>&nbsp;BABA GORA TRANSPORT</h1>
+	<h1 style="text-align: center; color: #ffc107; background-color: #000; border:double;"><i class="fa fa-truck" style="font-size:48px;color:#ffc107;"></i>&nbsp;BABA GORA TRANSPORT</h1>
 		<div class="container-table100">
 			<a href="{% url 'new' %}">
 			<button class="btn btn-special">
@@ -36,26 +27,20 @@
 			</button>
 		</a>
 			<p>&nbsp;&nbsp;&nbsp;</p>
-
 			<a href="{% url 'update' %}"><button class="btn btn-special">
 				UPDATE TRIP
 				<div class="fill-one"></div>
 			</button></a>
-			
 			<p>&nbsp;&nbsp;&nbsp;</p>
 			<a href="{% url 'expenses' %}"><button class="btn btn-special">
 				EXPENSES
 				<div class="fill-one"></div>
 			</button></a>
-			
 			<p>&nbsp;&nbsp;&nbsp;</p>
 			<a href="{% url 'logout' %}"><button class="btn btn-special">
 				LOGOUT
 				<div class="fill-one"></div>
 			</button></a>
-
-			
-			
 			<div class="wrap-table100">
 		<form style="color: white;" method="POST" action="">
 				{% csrf_token %}
@@ -73,7 +58,6 @@
 		</form>
 			<h1>&nbsp;</h1>
 				<div class="table100 ver1">
-
 					<div class="table100-firstcol">
 						<table>
 							<thead>
@@ -89,11 +73,9 @@
 								</tr>
 								{% endfor %}
 							{% endif %}
-
 							</tbody>
 						</table>
 					</div>
-					
 					<div class="wrap-table100-nextcols js-pscroll">
 						<div class="table100-nextcols">
 							<table>
@@ -124,15 +106,12 @@
 								{% endif %}
 								</tbody>
 							</table>
-						
 						</div>
 					</div>
-
 				</div>
 				<h1>&nbsp;</h1>
 				<h1 style="color: #fff;">EXPENSES</h1>
 				<div class="table100 ver1">
-
 					<div class="table100-firstcol">
 						<table>
 							<thead>
@@ -149,11 +128,9 @@
 								</tr>
 								{% endfor %}
 							{% endif %}
-
-							</tbody>
+								</tbody>
 						</table>
 					</div>
-					
 					<div class="wrap-table100-nextcols js-pscroll">
 						<div class="table100-nextcols">
 							<table>
@@ -176,26 +153,17 @@
 								{% endif %}
 								</tbody>
 							</table>
-						
 						</div>
 					</div>
-
 			</div>
 			<h1>&nbsp;</h1>
 			<h2 style="color: #fff;">Total Sale: {{total_sale}} <br> Total Expenses: {{total_expense}} </h2>
 		</div>
-		
 	</div>
-
-
-<!--===============================================================================================-->	
 	<script src="{% static 'dash/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
-<!--===============================================================================================-->
 	<script src="{% static 'dash/vendor/bootstrap/js/popper.js' %}"></script>
 	<script src="{% static 'dash/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-<!--===============================================================================================-->
 	<script src="{% static 'dash/vendor/select2/select2.min.js' %}"></script>
-<!--===============================================================================================-->
 	<script src="{% static 'dash/vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
 	<script>
 		$('.js-pscroll').each(function(){
@@ -214,13 +182,7 @@
 			});
 
 		});
-
-		
-		
-		
 	</script>
-<!--===============================================================================================-->
 	<script src="{% static 'dash/js/main.js' %}"></script>
-
 </body>
 </html>

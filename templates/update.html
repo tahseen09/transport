@@ -2,43 +2,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <title>BABA GORA  TRANSPORT | UPDATE TRIP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <!-- External CSS libraries -->
     <link type="text/css" rel="stylesheet" href="{% static 'trip/assets/css/bootstrap.min.css' %}">
     <link type="text/css" rel="stylesheet" href="{% static 'trip/assets/fonts/font-awesome/css/font-awesome.min.css' %}">
     <link type="text/css" rel="stylesheet" href="{% static 'trip/assets/fonts/flaticon/font/flaticon.css' %}">
-
-    <!-- Favicon icon -->
     <link rel="icon" type="image/png" href="{% static 'dash/images/icons/favicon.ico' %}"/>
-
-    <!-- Google fonts -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CPoppins:400,500,700,800,900%7CRoboto:100,300,400,400i,500,700">
-
-    <!-- Custom Stylesheet -->
     <link type="text/css" rel="stylesheet" href="{% static 'trip/assets/css/style.css' %}">
     <link rel="stylesheet" type="text/css" id="style_sheet" href="{% static 'trip/assets/css/skins/default.css' %}">
-
 </head>
 <body id="top" class="bg-grea-5">
 <div class="page_loader"></div>
-
-<!-- Login 5 start -->
 <div class="login-5">
     <div class="container">
         <div class="row login-box">
-            <div class="col-lg-5 col-md-12 col-pad-0 bg-img none-992">
-                
+            <div class="col-lg-5 col-md-12 col-pad-0 bg-img none-992"> 
                 <h3>BABA GORA TRANSPORT</h3>
-                
                 <a href="{% url 'new' %}" class="btn-outline">NEW TRIP</a>
                 <p>&nbsp;</p>
                 <a href="{% url 'expenses' %}" class="btn-outline">EXPENSES</a>
                 <p>&nbsp;</p>
-                 <a href="{% url 'dashboard' %}" class="btn-outline">HOME</a>
-                
+                 <a href="{% url 'dashboard' %}" class="btn-outline">HOME</a>     
             </div>
             <div class="col-lg-7 col-md-12 col-pad-0 align-self-center">
                 <div class="login-inner-form">
@@ -49,8 +35,7 @@
                             <div class="form-group">
                                 <input type="text" name="truck" class="input-text" placeholder="TRUCK NUMBER" style="text-transform: uppercase;" required>
                             </div>
-                             
-                              <div class="form-group">
+                               <div class="form-group">
                                 TRIP END DATE:<input type="date" name="trip_end_date" class="input-text" placeholder="TRIP END DATE" required>
                             </div>
                             <div class="form-group">
@@ -61,24 +46,17 @@
                                 <button type="submit" class="btn-md btn-theme">SAVE</button>
                             </div>
                         </form>
-
-                        {% if msg %}
+                       {% if msg %}
                             <p>{{msg}}</p>
                         {% endif %}
-                        
-                    </div>
+                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Login 5 end -->
-
-<!-- External JS libraries -->
 <script src="{% static 'trip/assets/js/jquery-2.2.0.min.js' %}"></script>
 <script src="{% static 'trip/assets/js/popper.min.js' %}"></script>
 <script src="{% static 'trip/assets/js/bootstrap.min.js' %}"></script>
-<!-- Custom JS Script -->
-
 </body>
 </html>
