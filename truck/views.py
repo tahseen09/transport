@@ -30,6 +30,7 @@ def dashboard(request):
                 return render(request, "detail.html", context)
             else:
                 road = Trip.objects.all().filter(trip_start_date__gte = start_date, trip_start_date__lte = end_date)
+                expenses = Expenses.objects.all().filter(expense_date__gte = start_date, expense_date__lte = end_date)
         
         if start_date:
             if truck:
@@ -60,9 +61,7 @@ def dashboard(request):
 
     else:
         road = Trip.objects.all().filter(trip_start_date = datetime.datetime.now().strftime('%Y-%m-%d') )
-        print(datetime.datetime.today())
         expenses = Expenses.objects.all().filter(expense_date = datetime.datetime.now().strftime('%Y-%m-%d'))
-        print(expenses)
         for r in road:
             total_sale = total_sale+r.total_cost
         for e in expenses:
@@ -85,7 +84,10 @@ def new_trip(request):
         cost = request.POST.get("cost")
         #comment = request.POST.get("comment")
         #expense = request.POST.get("expense")
+<<<<<<< HEAD
     
+=======
+>>>>>>> bf2b19ff3eb34f6b0a16c2598f3b9d49efd77191
         if weight and ('.' not in weight):
             weight = int(weight)*1.0
         if cost and ('.' not in cost):
@@ -129,7 +131,6 @@ def update_trip(request):
         t = Trip.objects.filter(truck=truck, trip_complete=False)
         """if expense and ('.' not in expense):
             expense = int(expense)*1.0
-            print(expense)
             exp = t[0].expense+float(expense)
         if comment:
             comm = t[0].comment+'\n'+comment
@@ -157,6 +158,7 @@ def expenses(request):
             expense = float(expense)
         comment = request.POST.get("comment")
         expense_date = request.POST.get("expense_date")
+        print(expense_date)
         t = Expenses(truck=truck, expense=expense, comment=comment, expense_date=expense_date)
         t.save()
         msg = "Expense saved successfully!"
