@@ -85,7 +85,7 @@ def new_trip(request):
         cost = request.POST.get("cost")
         #comment = request.POST.get("comment")
         #expense = request.POST.get("expense")
-        print(weight+' '+expense)
+    
         if weight and ('.' not in weight):
             weight = int(weight)*1.0
         if cost and ('.' not in cost):
