@@ -37,7 +37,7 @@ class Expenses(models.Model):
     truck = models.CharField(blank=False, null=False, max_length = 40)
     comment = models.TextField(blank=True, null=True)
     expense = models.FloatField(default=0.00, blank=True, null=True)
-    expense_date = models.TimeField(blank=True, null=True)
+    expense_date = models.DateField(blank=True, null=True)
 
     class Meta:
         unique_together = ["truck", "expense_date", "comment", "expense"]

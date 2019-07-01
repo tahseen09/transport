@@ -16,13 +16,16 @@ def dashboard(request):
     if request.method == "POST":
         start_date = request.POST.get("startdate")
         end_date = request.POST.get("enddate")
-        truck = request.POST.get("truck")
+        truck = request.POST.get("truck").upper()
         if start_date and end_date:
             if truck:
                 road = Trip.objects.all().filter(trip_start_date__gte = start_date, trip_start_date__lte = end_date, truck = truck)
+                expenses = Expenses.objects.all().filter(expense_date__gte = start_date, expense_date__lte = end_date, truck = truck)
                 for r in road:
                     total_sale = total_sale+r.total_cost
-                    total_expense = total_expense+r.expense
+                for e in expenses:
+                    total_expense = total_expense+e.expenses
+                
                 context = {"road":road, "total_sale":total_sale, "total_expense":total_expense}
                 return render(request, "detail.html", context)
             else:
@@ -31,22 +34,28 @@ def dashboard(request):
         if start_date:
             if truck:
                 road = Trip.objects.all().filter(trip_start_date__gte=start_date, truck=truck)
+                expenses = Expenses.objects.all().filter(expense_date__gte = start_date, truck = truck)
             else:
                 road = Trip.objects.all().filter(trip_start_date__gte=start_date)
+                expenses = Expenses.objects.all().filter(expense_date__gte = start_date)
 
         if end_date:
             if truck:
                 road = Trip.objects.all().filter(trip_start_date__lte = end_date, truck = truck)
+                expenses = Expenses.objects.all().filter(expense_date__lte = end_date, truck = truck)
             else:
                 road = Trip.objects.all().filter(trip_start_date__lte = end_date)
+                expenses = Expenses.objects.all().filter(expense_date__lte = end_date)
     
         if truck:
             road = Trip.objects.all().filter(truck=truck)
+            expenses = Expenses.objects.all().filter(truck = truck)
         
         for r in road:
             total_sale = total_sale+r.total_cost
-            total_expense = total_expense+r.expense
-        context = {"road":road, "truck":truck, "start_date":start_date, "end_date":end_date, "total_sale":total_sale, "total_expense":total_expense}
+        for e in expenses:
+            total_expense = total_expense+e.expense
+        context = {"road":road, "expenses":expenses ,"truck":truck, "start_date":start_date, "end_date":end_date, "total_sale":total_sale, "total_expense":total_expense}
         return render(request,"dashboard.html",context)
 
     else:
