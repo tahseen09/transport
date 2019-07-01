@@ -35,9 +35,11 @@
                 
                 <a href="{% url 'new' %}" class="btn-outline">NEW TRIP</a>
                 <p>&nbsp;</p>
-                <a href="{% url 'expenses' %}" class="btn-outline">EXPENSES</a>
-                <p>&nbsp;</p>
                  <a href="{% url 'dashboard' %}" class="btn-outline">HOME</a>
+                 <p>&nbsp;</p>
+                  <a href="{% url 'update' %}" class="btn-outline">UPDATE TRIP</a>
+                <p>&nbsp;</p>
+                 
                 
             </div>
             <div class="col-lg-7 col-md-12 col-pad-0 align-self-center">
@@ -58,9 +60,7 @@
                               <div class="form-group">
                                 <input type="date" name="trip_end_date" class="input-text" placeholder="TRIP END DATE">
                             </div>
-                            <div class="form-group">
-                                <input type="time" name="trip_end_time" class="input-text" placeholder="TRIP END TIME">
-                            </div>
+                           
                          
                             <div class="form-group">
                                 <button type="submit" class="btn-md btn-theme">SAVE</button>
