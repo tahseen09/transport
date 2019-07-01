@@ -31,8 +31,9 @@ def dashboard(request):
             else:
                 road = Trip.objects.all().filter(trip_start_date__gte = start_date, trip_start_date__lte = end_date)
                 expenses = Expenses.objects.all().filter(expense_date__gte = start_date, expense_date__lte = end_date)
+                print(expenses)
         
-        if start_date:
+        elif start_date:
             if truck:
                 road = Trip.objects.all().filter(trip_start_date__gte=start_date, truck=truck)
                 expenses = Expenses.objects.all().filter(expense_date__gte = start_date, truck = truck)
@@ -40,7 +41,7 @@ def dashboard(request):
                 road = Trip.objects.all().filter(trip_start_date__gte=start_date)
                 expenses = Expenses.objects.all().filter(expense_date__gte = start_date)
 
-        if end_date:
+        elif end_date:
             if truck:
                 road = Trip.objects.all().filter(trip_start_date__lte = end_date, truck = truck)
                 expenses = Expenses.objects.all().filter(expense_date__lte = end_date, truck = truck)
@@ -48,7 +49,7 @@ def dashboard(request):
                 road = Trip.objects.all().filter(trip_start_date__lte = end_date)
                 expenses = Expenses.objects.all().filter(expense_date__lte = end_date)
     
-        if truck:
+        else:
             road = Trip.objects.all().filter(truck=truck)
             expenses = Expenses.objects.all().filter(truck = truck)
         
@@ -154,7 +155,6 @@ def expenses(request):
             expense = float(expense)
         comment = request.POST.get("comment")
         expense_date = request.POST.get("expense_date")
-        print(expense_date)
         t = Expenses(truck=truck, expense=expense, comment=comment, expense_date=expense_date)
         t.save()
         msg = "Expense saved successfully!"
