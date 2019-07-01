@@ -60,7 +60,7 @@ def dashboard(request):
 @login_required
 def new_trip(request):
     if request.method == "POST":
-        truck = request.POST.get("truck")
+        truck = request.POST.get("truck").upper()
         trip_start_date = request.POST.get("trip_start_date")
         trip_start_time = request.POST.get("trip_start_time")
         source = request.POST.get("source")
@@ -86,11 +86,11 @@ def new_trip(request):
         total_cost = float(weight)*float(cost)
 
         if Trip.objects.all().filter(truck=truck, trip_complete=False).exists():
-            msg = "The truck with truck number:"+truck.upper()+" has not completed it's previous trip. Please update the details if required."
+            msg = "The truck with truck number:"+truck+" has not completed it's previous trip. Please update the details if required."
             context = {"msg":msg}
             return render(request, "new.html", context)
         #save the data
-        t = Trip(truck=truck.upper(), trip_start_date=trip_start_date, trip_start_time=trip_start_time, source=source, destination=destination, driver=driver, item=item, consignee=consignee, weight=weight, cost_per_ton=cost, total_cost=total_cost, comment=comment, expense=expense)
+        t = Trip(truck=truck, trip_start_date=trip_start_date, trip_start_time=trip_start_time, source=source, destination=destination, driver=driver, item=item, consignee=consignee, weight=weight, cost_per_ton=cost, total_cost=total_cost, comment=comment, expense=expense)
         t.save()
         msg = "Your new trip has been created"
         context = {"msg":msg}
@@ -103,7 +103,7 @@ def update_trip(request):
     exp = 0.00
     comm = ""
     if request.method == "POST":
-        truck = request.POST.get("truck")
+        truck = request.POST.get("truck").upper()
         expense = request.POST.get("expense")
         comment = request.POST.get("comment")
         trip_end_date = request.POST.get("trip_end_date")
