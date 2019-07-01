@@ -17,6 +17,18 @@ def dashboard(request):
         start_date = request.POST.get("startdate")
         end_date = request.POST.get("enddate")
         truck = request.POST.get("truck").upper()
+
+        if not (start_date or end_date or truck):
+            today = datetime.datetime.now().strftime('%Y-%m-%d')
+            road = Trip.objects.all().filter(trip_start_date = today )
+            expenses = Expenses.objects.all().filter(expense_date = today)
+            for r in road:
+                total_sale = total_sale+r.total_cost
+            for e in expenses:
+                total_expense = total_expense+e.expense
+            context = {"road":road, "expenses":expenses, "total_sale":total_sale, "total_expense": total_expense}
+            return render(request, "dashboard.html", context)
+
         if start_date and end_date:
             if truck:
                 road = Trip.objects.all().filter(trip_start_date__gte = start_date, trip_start_date__lte = end_date, truck = truck)
@@ -24,7 +36,7 @@ def dashboard(request):
                 for r in road:
                     total_sale = total_sale+r.total_cost
                 for e in expenses:
-                    total_expense = total_expense+e.expenses
+                    total_expense = total_expense+e.expense
                 
                 context = {"road":road, "total_sale":total_sale, "expenses":expenses, "total_expense":total_expense}
                 return render(request, "detail.html", context)
@@ -60,8 +72,9 @@ def dashboard(request):
         return render(request,"dashboard.html",context)
 
     else:
-        road = Trip.objects.all().filter(trip_start_date = datetime.datetime.now().strftime('%Y-%m-%d') )
-        expenses = Expenses.objects.all().filter(expense_date = datetime.datetime.now().strftime('%Y-%m-%d'))
+        today = datetime.datetime.now().strftime('%Y-%m-%d')
+        road = Trip.objects.all().filter(trip_start_date = today )
+        expenses = Expenses.objects.all().filter(expense_date = today)
         for r in road:
             total_sale = total_sale+r.total_cost
         for e in expenses:
