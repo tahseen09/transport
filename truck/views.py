@@ -26,7 +26,7 @@ def dashboard(request):
                 for e in expenses:
                     total_expense = total_expense+e.expenses
                 
-                context = {"road":road, "total_sale":total_sale, "total_expense":total_expense}
+                context = {"road":road, "total_sale":total_sale, "expenses":expenses, "total_expense":total_expense}
                 return render(request, "detail.html", context)
             else:
                 road = Trip.objects.all().filter(trip_start_date__gte = start_date, trip_start_date__lte = end_date)
@@ -59,13 +59,15 @@ def dashboard(request):
         return render(request,"dashboard.html",context)
 
     else:
-        road = Trip.objects.all().filter(trip_complete = False)
-        expenses = Expenses.objects.all().filter(expense_date = datetime.datetime.today().strftime('%Y-%m-%d'))
+        road = Trip.objects.all().filter(trip_start_date = datetime.datetime.now().strftime('%Y-%m-%d') )
+        print(datetime.datetime.today())
+        expenses = Expenses.objects.all().filter(expense_date = datetime.datetime.now().strftime('%Y-%m-%d'))
+        print(expenses)
         for r in road:
             total_sale = total_sale+r.total_cost
         for e in expenses:
             total_expense = total_expense+e.expense
-        context = {"road":road, "total_sale":total_sale, "total_expense": total_expense}
+        context = {"road":road, "expenses":expenses, "total_sale":total_sale, "total_expense": total_expense}
         return render(request, "dashboard.html", context)
 
 @login_required
