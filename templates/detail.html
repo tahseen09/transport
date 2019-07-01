@@ -8,7 +8,7 @@
         <title>BABA GORA TRANSPORT</title>
         
         <link rel="stylesheet" type="text/css" href="{% static 'detail/styles.css' %}" />
-        <link rel="icon" type="image/png" href="{% static 'dash/images/icons/favicon.ico' %}"/>
+        
        
         
     </head>
@@ -70,6 +70,24 @@
                         <li style="font-size: 20px; letter-spacing: 2px;">Comment : {{r.comment}}</li><br>
                         <li style="font-size: 20px; letter-spacing: 2px;">Trip Completed Date : {{r.trip_end_date}}</li><br>
                         <li style="font-size: 20px; letter-spacing: 2px;">Trip Completed Time : {{r.trip_end_time}}</li><br>    
+                        </p>
+                    <br><br>
+                    </div>
+                {% endfor %}
+                </article>
+
+                <article id="article2">
+                {% for e in expenses %}
+                    <h2>Truck Number: {{e.truck}}</h2>
+                    
+                    <div class="line"></div>
+                    
+                    <div class="articleBody clear">
+                    	
+                        <p>
+                        <li style="font-size: 20px; letter-spacing: 2px;">Expense Date : {{e.expense_date}}</li><br>
+                        <li style="font-size: 20px; letter-spacing: 2px;">Expense:  {{e.expense}}</li><br>
+                        <li style="font-size: 20px; letter-spacing: 2px;">Comment : {{e.comment}}</li><br>
                         </p>
                     <br><br>
                     </div>

@@ -60,10 +60,12 @@ def dashboard(request):
 
     else:
         road = Trip.objects.all().filter(trip_complete = False)
+        expenses = Expenses.objects.all().filter(expense_date = datetime.datetime.today().strftime('%Y-%m-%d'))
         for r in road:
             total_sale = total_sale+r.total_cost
-            total_expense = total_expense+r.expense
-        context = {"road":road, "total_sale":total_sale, "total_expense":total_expense}
+        for e in expenses:
+            total_expense = total_expense+e.expense
+        context = {"road":road, "total_sale":total_sale, "total_expense": total_expense}
         return render(request, "dashboard.html", context)
 
 @login_required
