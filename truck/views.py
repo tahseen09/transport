@@ -118,8 +118,8 @@ def new_trip(request):
         if diesel and ('.' not in diesel):
             diesel = int(diesel)*1.0
 
-        if total_weight and cost and shortage and less:
-            total_cost = (float(total_weight)*float(cost)) - float(shortage)- float(less)
+        #if total_weight and cost and shortage and less:
+        total_cost = (float(total_weight)*float(cost)) - float(shortage)- float(less)
 
         if Trip.objects.all().filter(truck=truck, trip_complete=False).exists():
             msg = "The truck with truck number:"+truck+" has not completed it's previous trip. Please update the details if required."
