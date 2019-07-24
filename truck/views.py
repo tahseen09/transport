@@ -87,13 +87,9 @@ def new_trip(request):
     if request.method == "POST":
         truck = request.POST.get("truck").upper()
         trip_start_date = request.POST.get("trip_start_date")
-        trip_start_time = request.POST.get("trip_start_time")
         source = request.POST.get("source")
         destination = request.POST.get("destination")
-        driver = request.POST.get("driver")
-        item = request.POST.get("item")
-        consignee = request.POST.get("consignee")
-        total_weight = request.POST.get("weight")
+        total_weight = request.POST.get("total_weight")
         cost = request.POST.get("cost")
         rec_weight = request.POST.get("rec_weight")
         mop = request.POST.get("mop")
@@ -117,7 +113,10 @@ def new_trip(request):
             rec_weight = int(rec_weight)*1.0
         if diesel and ('.' not in diesel):
             diesel = int(diesel)*1.0
-
+        if diesel>0.0:
+            e = Expenses(expense=diesel, comment="Diesel", expense_date=trip_start_date, truck=truck)
+            e.save()
+        
         #if total_weight and cost and shortage and less:
         total_cost = (float(total_weight)*float(cost)) - float(shortage)- float(less)
 
@@ -126,7 +125,7 @@ def new_trip(request):
             context = {"msg":msg}
             return render(request, "new.html", context)
         #save the data
-        t = Trip(truck=truck, trip_start_date=trip_start_date, trip_start_time=trip_start_time, source=source, destination=destination, driver=driver, item=item, consignee=consignee, total_weight=total_weight, cost_per_ton=cost, total_cost=total_cost, rec_weight=rec_weight, diesel=diesel, shortage=shortage, less=less, sl_no=sl_no, tp_pass=tp_pass, advance=advance, status=status, mop=mop)
+        t = Trip(truck=truck, trip_start_date=trip_start_date, source=source, destination=destination, total_weight=total_weight, cost_per_ton=cost, total_cost=total_cost, rec_weight=rec_weight, shortage=shortage, less=less, sl_no=sl_no, tp_pass=tp_pass, advance=advance, status=status, mop=mop)
         t.save()
         msg = "Your new trip has been created"
         context = {"msg":msg}
@@ -143,7 +142,7 @@ def update_trip(request):
         #expense = request.POST.get("expense")
         #comment = request.POST.get("comment")
         trip_end_date = request.POST.get("trip_end_date")
-        trip_end_time = request.POST.get("trip_end_time")
+        #trip_end_time = request.POST.get("trip_end_time")
         if not Trip.objects.filter(truck=truck, trip_complete=False).exists():
             msg = "The truck with number:"+truck+" is not taking any trip right now."
             context = {"msg":msg}
@@ -156,10 +155,7 @@ def update_trip(request):
             comm = t[0].comment+'\n'+comment
             Trip.objects.filter(truck=truck, trip_complete=False).update(expense=exp, comment=comm)"""
         if trip_end_date:
-            if trip_end_time:
-                Trip.objects.filter(truck=truck, trip_complete=False).update(trip_end_date=trip_end_date, trip_end_time=trip_end_time, trip_complete = True)
-            else:
-                Trip.objects.filter(truck=truck, trip_complete=False).update(trip_end_date=trip_end_date, trip_complete = True)
+            Trip.objects.filter(truck=truck, trip_complete=False).update(trip_end_date=trip_end_date, trip_complete = True)
         msg = "Trip details updated"
         context = {"msg":msg}
         return render(request,"update.html",context)
