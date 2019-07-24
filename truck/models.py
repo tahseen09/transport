@@ -7,22 +7,6 @@ from django.db import models
     def __str__(self):
         return self.truck_number"""
 
-Sl no me 1,2,3 aise dhlega 
-Date me date
-Truck number me truck no
-From
-To
-Total Weight in Metric Ton 
-Recieving Weight in MT
-Rate per MT
-Diesel
-Advance
-Total jo rhega wo rate*weight
-Shortage me jitna paisa dhlege total se minus ho jyega
-Less me bhi jtna paisa dhlege total se minus ho jyega 
-Final amount me last sb cut ke ktna paisa mila 
-Status me ok likhega 
-Mode of payment me online, cheque yahi sb rhega
 
 class Trip(models.Model):
     truck = models.CharField(blank=False, null=False, max_length = 40)
@@ -41,10 +25,12 @@ class Trip(models.Model):
     cost_per_ton = models.FloatField(blank=True, null=True)
     shortage = models.FloatField(blank=True, null=True)
     less = models.FloatField(blank=True, null=True)
-    status = models.CharField(blank=True, max_length=30)
-    payment_mode = models.CharField(blank=True, max_length=30)
+    status = models.CharField(blank=True, max_length=100)
+    mop = models.CharField(blank=True, max_length=30)
     diesel = models.FloatField(blank=True, null=True, default=0.0)
     total_cost = models.FloatField(blank=True, null=True)
+    tp_pass = models.CharField(blank=True, max_length=100)
+    sl_no = models.CharField(blank=True, null=True,max_length=100)
     
     
     class Meta:

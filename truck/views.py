@@ -10,7 +10,6 @@ def index(request):
 
 @login_required
 def dashboard(request):
-    print(request.session.session_key)
     road = None
     total_sale = 0.0
     total_expense = 0.0
@@ -68,7 +67,7 @@ def dashboard(request):
         for r in road:
             total_sale = total_sale+r.total_cost
         for e in expenses:
-            total_expense = total_expense+e.expense-
+            total_expense = total_expense+e.expense
         context = {"road":road, "expenses":expenses ,"truck":truck, "start_date":start_date, "end_date":end_date, "total_sale":total_sale, "total_expense":total_expense}
         return render(request,"dashboard.html",context)
 
@@ -97,28 +96,37 @@ def new_trip(request):
         total_weight = request.POST.get("weight")
         cost = request.POST.get("cost")
         rec_weight = request.POST.get("rec_weight")
-        
-        #expense = request.POST.get("expense")
-    
-        if weight and ('.' not in weight):
-            weight = int(weight)*1.0
+        mop = request.POST.get("mop")
+        shortage = request.POST.get("shortage")
+        less = request.POST.get("less")
+        status = request.POST.get("status")
+        diesel = request.POST.get("diesel")
+        advance = request.POST.get("advance")
+        sl_no = request.POST.get("sl_no")
+        tp_pass = request.POST.get("pass")
+
+        if total_weight and ('.' not in total_weight):
+            total_weight = int(total_weight)*1.0
         if cost and ('.' not in cost):
             cost = int(cost)*1.0
-        """if expense and ('.' not in expense):
-            expense = int(expense)*1.0
-        else:
-            expense = 0.0"""
-        if weight and cost:
-            total_weight = float(total_weight)
-            cost = float(cost)
-            total_cost = float(total_weight)*float(cost) - float()
+        if shortage and ('.' not in shortage):
+            shortage = int(shortage)*1.0
+        if less and ('.' not in less):
+            less = int(less)*1.0
+        if rec_weight and ('.' not in rec_weight):
+            rec_weight = int(rec_weight)*1.0
+        if diesel and ('.' not in diesel):
+            diesel = int(diesel)*1.0
+
+        if total_weight and cost and shortage and less:
+            total_cost = (float(total_weight)*float(cost)) - float(shortage)- float(less)
 
         if Trip.objects.all().filter(truck=truck, trip_complete=False).exists():
             msg = "The truck with truck number:"+truck+" has not completed it's previous trip. Please update the details if required."
             context = {"msg":msg}
             return render(request, "new.html", context)
         #save the data
-        t = Trip(truck=truck, trip_start_date=trip_start_date, trip_start_time=trip_start_time, source=source, destination=destination, driver=driver, item=item, consignee=consignee, weight=weight, cost_per_ton=cost, total_cost=total_cost)
+        t = Trip(truck=truck, trip_start_date=trip_start_date, trip_start_time=trip_start_time, source=source, destination=destination, driver=driver, item=item, consignee=consignee, total_weight=total_weight, cost_per_ton=cost, total_cost=total_cost, rec_weight=rec_weight, diesel=diesel, shortage=shortage, less=less, sl_no=sl_no, tp_pass=tp_pass, advance=advance, status=status, mop=mop)
         t.save()
         msg = "Your new trip has been created"
         context = {"msg":msg}
