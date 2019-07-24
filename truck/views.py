@@ -10,6 +10,7 @@ def index(request):
 
 @login_required
 def dashboard(request):
+    print(request.session.session_key)
     road = None
     total_sale = 0.0
     total_expense = 0.0
@@ -67,7 +68,7 @@ def dashboard(request):
         for r in road:
             total_sale = total_sale+r.total_cost
         for e in expenses:
-            total_expense = total_expense+e.expense
+            total_expense = total_expense+e.expense-
         context = {"road":road, "expenses":expenses ,"truck":truck, "start_date":start_date, "end_date":end_date, "total_sale":total_sale, "total_expense":total_expense}
         return render(request,"dashboard.html",context)
 
@@ -93,9 +94,10 @@ def new_trip(request):
         driver = request.POST.get("driver")
         item = request.POST.get("item")
         consignee = request.POST.get("consignee")
-        weight = request.POST.get("weight")
+        total_weight = request.POST.get("weight")
         cost = request.POST.get("cost")
-        #comment = request.POST.get("comment")
+        rec_weight = request.POST.get("rec_weight")
+        
         #expense = request.POST.get("expense")
     
         if weight and ('.' not in weight):
@@ -107,9 +109,9 @@ def new_trip(request):
         else:
             expense = 0.0"""
         if weight and cost:
-            weight = float(weight)
+            total_weight = float(total_weight)
             cost = float(cost)
-            total_cost = float(weight)*float(cost)
+            total_cost = float(total_weight)*float(cost) - float()
 
         if Trip.objects.all().filter(truck=truck, trip_complete=False).exists():
             msg = "The truck with truck number:"+truck+" has not completed it's previous trip. Please update the details if required."
