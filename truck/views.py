@@ -113,9 +113,6 @@ def new_trip(request):
             rec_weight = int(rec_weight)*1.0
         if diesel and ('.' not in diesel):
             diesel = int(diesel)*1.0
-        if diesel>0.0:
-            e = Expenses(expense=diesel, comment="Diesel", expense_date=trip_start_date, truck=truck)
-            e.save()
         
         #if total_weight and cost and shortage and less:
         total_cost = (float(total_weight)*float(cost)) - float(shortage)- float(less)
@@ -127,6 +124,9 @@ def new_trip(request):
         #save the data
         t = Trip(truck=truck, trip_start_date=trip_start_date, source=source, destination=destination, total_weight=total_weight, cost_per_ton=cost, total_cost=total_cost, rec_weight=rec_weight, shortage=shortage, less=less, sl_no=sl_no, tp_pass=tp_pass, advance=advance, status=status, mop=mop)
         t.save()
+        if diesel>0.0:
+            e = Expenses(expense=diesel, comment="Diesel", expense_date=trip_start_date, truck=truck)
+            e.save()
         msg = "Your new trip has been created"
         context = {"msg":msg}
         return render(request,"new.html",context)
@@ -139,21 +139,14 @@ def update_trip(request):
     comm = ""
     if request.method == "POST":
         truck = request.POST.get("truck").upper()
-        #expense = request.POST.get("expense")
-        #comment = request.POST.get("comment")
+
         trip_end_date = request.POST.get("trip_end_date")
-        #trip_end_time = request.POST.get("trip_end_time")
         if not Trip.objects.filter(truck=truck, trip_complete=False).exists():
             msg = "The truck with number:"+truck+" is not taking any trip right now."
             context = {"msg":msg}
             return render(request,"update.html",context)
         t = Trip.objects.filter(truck=truck, trip_complete=False)
-        """if expense and ('.' not in expense):
-            expense = int(expense)*1.0
-            exp = t[0].expense+float(expense)
-        if comment:
-            comm = t[0].comment+'\n'+comment
-            Trip.objects.filter(truck=truck, trip_complete=False).update(expense=exp, comment=comm)"""
+
         if trip_end_date:
             Trip.objects.filter(truck=truck, trip_complete=False).update(trip_end_date=trip_end_date, trip_complete = True)
         msg = "Trip details updated"

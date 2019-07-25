@@ -11,7 +11,7 @@ class Trip(models.Model):
     destination = models.CharField(max_length = 100, blank = True, null=True)
     #driver = models.CharField(max_length = 30, blank = False, null=True)
     #item = models.CharField(max_length = 30, blank = False, null=True)
-    #trip_complete = models.BooleanField(default=False)
+    trip_complete = models.BooleanField(default=False)
     total_weight = models.FloatField(blank=True, null=True)
     rec_weight = models.FloatField(blank=True, null=True)
     cost_per_ton = models.FloatField(blank=True, null=True)
@@ -30,7 +30,7 @@ class Trip(models.Model):
         unique_together = ["truck","trip_start_date", "sl_no"]
 
     def __str__(self):
-        show = str(self.truck)+'|'+str(self.trip_start_date)+'|'+str(self.trip_start_time)
+        show = str(self.truck)+'|'+str(self.trip_start_date)+'|'+str(self.sl_no)
         return show
 
 class Expenses(models.Model):

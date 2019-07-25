@@ -33,7 +33,7 @@
                         <form action="" method="POST">
                             {% csrf_token %}
                             <div class="form-group">
-                                <input type="number" name="slno" class="input-text" placeholder="SL NO" required style="text-transform: uppercase;">
+                                <input type="number" name="sl_no" class="input-text" placeholder="SL NO" required style="text-transform: uppercase;">
                             </div>
                              <div class="form-group">
                               TRIP START DATE:<input type="date" name="trip_start_date" class="input-text" placeholder="TRIP START DATE" required>
@@ -49,10 +49,6 @@
                              <div class="form-group">
                                 <input type="text" name="destination" class="input-text" placeholder="TO" style="text-transform: uppercase;" required>
                             </div>
-                            <div class="form-group">
-                                <input type="text" name="consignee" class="input-text" placeholder="CONSIGNEE" style="text-transform: uppercase;" required>
-                            </div>
-                            
                              <div class="form-group">
                                 <input type="text" name="pass" class="input-text" placeholder="T.P & PASS NO." style="text-transform: uppercase;">
                             </div>
