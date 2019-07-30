@@ -103,6 +103,8 @@ def new_trip(request):
 
         if total_weight and ('.' not in total_weight):
             total_weight = int(total_weight)*1.0
+        if advance and ('.' not in advance):
+            advance = int(advance)*1.0
         if cost and ('.' not in cost):
             cost = int(cost)*1.0
         if shortage and ('.' not in shortage):
@@ -128,7 +130,7 @@ def new_trip(request):
         if less>0.0:
             e = Expenses(expense=less, comment="Less", expense_date=trip_start_date, truck=truck)
             e.save()
-        if advance>0.0:
+        if float(advance)>0.0:
             e = Expenses(expense=advance, comment="Driver Advance", expense_date=trip_start_date, truck=truck)
             e.save()
         msg = "Your new trip has been created"
