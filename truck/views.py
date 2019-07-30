@@ -144,17 +144,16 @@ def update_trip(request):
     exp = 0.00
     comm = ""
     if request.method == "POST":
-        truck = request.POST.get("truck").upper()
-
+        sl_no = request.POST.get("sl_no")
+        t = Trip.objects.filter(sl_no=sl_no)
         trip_end_date = request.POST.get("trip_end_date")
-        if not Trip.objects.filter(truck=truck, trip_complete=False).exists():
+        if not t.exists():
             msg = "The truck with number:"+truck+" is not taking any trip right now."
             context = {"msg":msg}
             return render(request,"update.html",context)
-        t = Trip.objects.filter(truck=truck, trip_complete=False)
 
         if trip_end_date:
-            Trip.objects.filter(truck=truck, trip_complete=False).update(trip_end_date=trip_end_date, trip_complete = True)
+            t.update(trip_end_date=trip_end_date)
         msg = "Trip details updated"
         context = {"msg":msg}
         return render(request,"update.html",context)
