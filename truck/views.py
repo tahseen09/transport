@@ -147,8 +147,8 @@ def update_trip(request):
         sl_no = request.POST.get("sl_no")
         t = Trip.objects.filter(sl_no=sl_no)
         trip_end_date = request.POST.get("trip_end_date")
-        if not t.exists():
-            msg = "The truck with number:"+truck+" is not taking any trip right now."
+        if not t:
+            msg = "Trip with Serial number:"+sl_no+" doesn't exist"
             context = {"msg":msg}
             return render(request,"update.html",context)
 
