@@ -114,18 +114,22 @@ def new_trip(request):
         if diesel and ('.' not in diesel):
             diesel = int(diesel)*1.0
         
-        #if total_weight and cost and shortage and less:
-        total_cost = (float(total_weight)*float(cost)) - float(shortage)- float(less)
-
-        if Trip.objects.all().filter(truck=truck, trip_complete=False).exists():
+        total_cost = (float(rec_weight)*float(cost))
+        """if Trip.objects.all().filter(truck=truck, trip_complete=False).exists():
             msg = "The truck with truck number:"+truck+" has not completed it's previous trip. Please update the details if required."
             context = {"msg":msg}
-            return render(request, "new.html", context)
+            return render(request, "new.html", context)"""
         #save the data
-        t = Trip(truck=truck, trip_start_date=trip_start_date, source=source, destination=destination, total_weight=total_weight, cost_per_ton=cost, total_cost=total_cost, rec_weight=rec_weight, shortage=shortage, less=less, sl_no=sl_no, tp_pass=tp_pass, advance=advance, status=status, mop=mop)
+        t = Trip(truck=truck, trip_start_date=trip_start_date, source=source, destination=destination, total_weight=total_weight, cost_per_ton=cost, total_cost=total_cost, rec_weight=rec_weight, shortage=shortage, sl_no=sl_no, tp_pass=tp_pass, status=status, mop=mop)
         t.save()
         if diesel>0.0:
             e = Expenses(expense=diesel, comment="Diesel", expense_date=trip_start_date, truck=truck)
+            e.save()
+        if less>0.0:
+            e = Expenses(expense=less, comment="Less", expense_date=trip_start_date, truck=truck)
+            e.save()
+        if advance>0.0:
+            e = Expenses(expense=advance, comment="Driver Advance", expense_date=trip_start_date, truck=truck)
             e.save()
         msg = "Your new trip has been created"
         context = {"msg":msg}
