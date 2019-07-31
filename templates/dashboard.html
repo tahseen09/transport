@@ -81,22 +81,28 @@
 							<table>
 								<thead>
 									<tr class="row100 head">
-										<th class="cell100 column2">Start Date</th>
+										<th class="cell100 column6">Sl. No</th>
+										<th class="cell100 column6">Start Date</th>
 										<th class="cell100 column6">Weight</th>
-										<th class="cell100 column7">Total Cost</th>
-										<th class="cell100 column4">Source</th>
-										<th class="cell100 column8">Destination</th>
+										<th class="cell100 column6">Total Cost</th>
+										<th class="cell100 column6">T.P & PASS NO.</th>
+										<th class="cell100 column6">Source</th>
+										<th class="cell100 column6">Destination</th>
+										<th class="cell100 column6">Status</th>
 									</tr>
 								</thead>
 								<tbody>
 								{% if road %}
 									{% for r in road %}
 									<tr class="row100 body">
-										<td class="cell100 column2">{{r.trip_start_date}}</td>
-										<td class="cell100 column3">{{r.total_weight}}</td>
-										<td class="cell100 column4">{{r.total_cost}}</td>
+										<td class="cell100 column6">{{r.sl_no}}</td>
+										<td class="cell100 column6">{{r.trip_start_date}}</td>
+										<td class="cell100 column6">{{r.total_weight}}</td>
+										<td class="cell100 column6">{{r.total_cost}}</td>
+										<td class="cell100 column6">{{r.tp_pass}}</td>
 										<td class="cell100 column6">{{r.source}}</td>
-										<td class="cell100 column7">{{r.destination}}</td>
+										<td class="cell100 column6">{{r.destination}}</td>
+										<td class="cell100 column6">{{r.status}}</td>
 									</tr>
 									{% endfor %}
 								{% endif %}
@@ -132,18 +138,18 @@
 							<table>
 								<thead>
 									<tr class="row100 head">
-										<th class="cell100 column2">Expense Date</th>
+										<th class="cell100 column6">Expense Date</th>
 										<th class="cell100 column6">Expense</th>
-										<th class="cell100 column5">Comment</th>
+										<th class="cell100 column6">Comment</th>
 									</tr>
 								</thead>
 								<tbody>
 								{% if expenses %}
 									{% for e in expenses %}
 									<tr class="row100 body">
-										<td class="cell100 column2">{{e.expense_date}}</td>
-										<td class="cell100 column4">{{e.expense}}</td>
-										<td class="cell100 column8">{{e.comment}}</td>
+										<td class="cell100 column6">{{e.expense_date}}</td>
+										<td class="cell100 column6">{{e.expense}}</td>
+										<td class="cell100 column6">{{e.comment}}</td>
 									</tr>
 									{% endfor %}
 								{% endif %}
@@ -155,6 +161,7 @@
 			<h1>&nbsp;</h1>
 			<h2 style="color: #fff;">Total Sale: {{total_sale}} <br> Total Expenses: {{total_expense}} </h2>
 		</div>
+		<p style="text-align: center;font-size: 16px"><a href="/admin"> ADMIN</a></p>
 	</div>
 	<script src="{% static 'dash/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
 	<script src="{% static 'dash/vendor/bootstrap/js/popper.js' %}"></script>

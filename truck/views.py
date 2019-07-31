@@ -103,6 +103,8 @@ def new_trip(request):
 
         if total_weight and ('.' not in total_weight):
             total_weight = int(total_weight)*1.0
+        if advance and ('.' not in advance):
+            advance = int(advance)*1.0
         if cost and ('.' not in cost):
             cost = int(cost)*1.0
         if shortage and ('.' not in shortage):
@@ -114,18 +116,22 @@ def new_trip(request):
         if diesel and ('.' not in diesel):
             diesel = int(diesel)*1.0
         
-        #if total_weight and cost and shortage and less:
-        total_cost = (float(total_weight)*float(cost)) - float(shortage)- float(less)
-
-        if Trip.objects.all().filter(truck=truck, trip_complete=False).exists():
+        total_cost = (float(rec_weight)*float(cost))
+        """if Trip.objects.all().filter(truck=truck, trip_complete=False).exists():
             msg = "The truck with truck number:"+truck+" has not completed it's previous trip. Please update the details if required."
             context = {"msg":msg}
-            return render(request, "new.html", context)
+            return render(request, "new.html", context)"""
         #save the data
-        t = Trip(truck=truck, trip_start_date=trip_start_date, source=source, destination=destination, total_weight=total_weight, cost_per_ton=cost, total_cost=total_cost, rec_weight=rec_weight, shortage=shortage, less=less, sl_no=sl_no, tp_pass=tp_pass, advance=advance, status=status, mop=mop)
+        t = Trip(truck=truck, trip_start_date=trip_start_date, source=source, destination=destination, total_weight=total_weight, cost_per_ton=cost, total_cost=total_cost, rec_weight=rec_weight, shortage=shortage, sl_no=sl_no, tp_pass=tp_pass, status=status, mop=mop)
         t.save()
         if diesel>0.0:
             e = Expenses(expense=diesel, comment="Diesel", expense_date=trip_start_date, truck=truck)
+            e.save()
+        if less>0.0:
+            e = Expenses(expense=less, comment="Less", expense_date=trip_start_date, truck=truck)
+            e.save()
+        if float(advance)>0.0:
+            e = Expenses(expense=advance, comment="Driver Advance", expense_date=trip_start_date, truck=truck)
             e.save()
         msg = "Your new trip has been created"
         context = {"msg":msg}
@@ -138,17 +144,16 @@ def update_trip(request):
     exp = 0.00
     comm = ""
     if request.method == "POST":
-        truck = request.POST.get("truck").upper()
-
+        sl_no = request.POST.get("sl_no")
+        t = Trip.objects.filter(sl_no=sl_no)
         trip_end_date = request.POST.get("trip_end_date")
-        if not Trip.objects.filter(truck=truck, trip_complete=False).exists():
-            msg = "The truck with number:"+truck+" is not taking any trip right now."
+        if not t:
+            msg = "Trip with Serial number:"+sl_no+" doesn't exist"
             context = {"msg":msg}
             return render(request,"update.html",context)
-        t = Trip.objects.filter(truck=truck, trip_complete=False)
 
         if trip_end_date:
-            Trip.objects.filter(truck=truck, trip_complete=False).update(trip_end_date=trip_end_date, trip_complete = True)
+            t.update(trip_end_date=trip_end_date)
         msg = "Trip details updated"
         context = {"msg":msg}
         return render(request,"update.html",context)
