@@ -37,13 +37,13 @@ def dashboard(request):
                     total_sale = total_sale+r.total_cost
                 for e in expenses:
                     total_expense = total_expense+e.expense
-                
+
                 context = {"road":road, "total_sale":total_sale, "expenses":expenses, "total_expense":total_expense}
                 return render(request, "detail.html", context)
             else:
                 road = Trip.objects.all().filter(trip_start_date__gte = start_date, trip_start_date__lte = end_date)
                 expenses = Expenses.objects.all().filter(expense_date__gte = start_date, expense_date__lte = end_date)
-        
+
         elif start_date:
             if truck:
                 road = Trip.objects.all().filter(trip_start_date__gte=start_date, truck=truck)
@@ -59,11 +59,11 @@ def dashboard(request):
             else:
                 road = Trip.objects.all().filter(trip_start_date__lte = end_date)
                 expenses = Expenses.objects.all().filter(expense_date__lte = end_date)
-    
+
         else:
             road = Trip.objects.all().filter(truck=truck)
             expenses = Expenses.objects.all().filter(truck = truck)
-        
+
         for r in road:
             total_sale = total_sale+r.total_cost
         for e in expenses:
@@ -79,7 +79,8 @@ def dashboard(request):
             total_sale = total_sale+r.total_cost
         for e in expenses:
             total_expense = total_expense+e.expense
-        context = {"road":road, "expenses":expenses, "total_sale":total_sale, "total_expense": total_expense}
+        profit = total_sale-total_expense
+        context = {"road":road, "expenses":expenses, "total_sale":total_sale, "total_expense": total_expense, "profit":profit}
         return render(request, "dashboard.html", context)
 
 @login_required
@@ -115,7 +116,7 @@ def new_trip(request):
             rec_weight = int(rec_weight)*1.0
         if diesel and ('.' not in diesel):
             diesel = int(diesel)*1.0
-        
+
         total_cost = (float(rec_weight)*float(cost))
         """if Trip.objects.all().filter(truck=truck, trip_complete=False).exists():
             msg = "The truck with truck number:"+truck+" has not completed it's previous trip. Please update the details if required."
