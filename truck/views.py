@@ -37,8 +37,9 @@ def dashboard(request):
                     total_sale = total_sale+r.total_cost
                 for e in expenses:
                     total_expense = total_expense+e.expense
+                profit = total_sale-total_expense
 
-                context = {"road":road, "total_sale":total_sale, "expenses":expenses, "total_expense":total_expense}
+                context = {"road":road, "total_sale":total_sale, "expenses":expenses, "total_expense":total_expense, "profit":profit}
                 return render(request, "detail.html", context)
             else:
                 road = Trip.objects.all().filter(trip_start_date__gte = start_date, trip_start_date__lte = end_date)
@@ -68,7 +69,8 @@ def dashboard(request):
             total_sale = total_sale+r.total_cost
         for e in expenses:
             total_expense = total_expense+e.expense
-        context = {"road":road, "expenses":expenses ,"truck":truck, "start_date":start_date, "end_date":end_date, "total_sale":total_sale, "total_expense":total_expense}
+        profit = total_sale-total_expense
+        context = {"road":road, "expenses":expenses ,"truck":truck, "start_date":start_date, "end_date":end_date, "total_sale":total_sale, "total_expense":total_expense, "profit":profit}
         return render(request,"dashboard.html",context)
 
     else:
