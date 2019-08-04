@@ -13,6 +13,9 @@ def dashboard(request):
     road = None
     total_sale = 0.0
     total_expense = 0.0
+    total_weight = 0.0
+    total_rec_weight = 0.0
+    total_shortage = 0.0
     if request.method == "POST":
         start_date = request.POST.get("startdate")
         end_date = request.POST.get("enddate")
