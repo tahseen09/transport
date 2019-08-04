@@ -3,16 +3,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>BABA GORA TRANSPORT</title>
+        <title>BABA GORA TRANSPORT | TRUCK DETAIL</title>
         <link rel="stylesheet" type="text/css" href="{% static 'detail/styles.css' %}" />
         </head>
      <body>
-    	<section id="page"> 
-            <header> 
+    	<section id="page">
+            <header>
                 <hgroup>
                     <h1>BABA GORA</h1>
                     <h3>TRANSPORT</h3>
-                </hgroup>                     
+                </hgroup>
                <a href="{% url 'dashboard' %}"><button class="btn btn-special">
                HOME
                 <div class="fill-one"></div>
@@ -31,8 +31,8 @@
                 <div class="fill-one"></div>
             </button></a>
             </header>
-            <section id="articles"> 
-                <div class="line"></div> 
+            <section id="articles">
+                <div class="line"></div>
                 <div class="line"></div>
                 <article id="article2">
                 {% for r in road %}
@@ -49,7 +49,7 @@
                         <li style="font-size: 20px; letter-spacing: 2px;">Total Cost : {{r.total_cost}}</li><br>
                         <li style="font-size: 20px; letter-spacing: 2px;">Trip Completed Date : {{r.trip_end_date}}</li><br>
                         <li style="font-size: 20px; letter-spacing: 2px;">TP Pass : {{r.tp_pass}}</li><br>
-                        <li style="font-size: 20px; letter-spacing: 2px;">Receiving Weight: {{r.rec_weight}}</li><br>  
+                        <li style="font-size: 20px; letter-spacing: 2px;">Receiving Weight: {{r.rec_weight}}</li><br>
                         <li style="font-size: 20px; letter-spacing: 2px;">Diesel : {{r.diesel}}</li><br>
                         <li style="font-size: 20px; letter-spacing: 2px;">Mode Of Payment : {{r.mop}}</li><br>
                         <li style="font-size: 20px; letter-spacing: 2px;">Status : {{r.status}}</li><br>
@@ -72,14 +72,14 @@
                     </div>
                 {% endfor %}
                 </article>
-            <h2>Total Sale:{{total_sale}}<br>Total Expense: {{total_expense}}</h2>
+            <h2>Total Sale:{{total_sale}}<br>Total Expense: {{total_expense}} <br> Total Profit: {{profit}} <br> Total Weight: {{total_weight}} <br> Total Receiving Weight: {{total_rec_weight}} <br> Total Shortage: {{total_shortage}}</h2>
                 <div class="line"></div>
             </section>
-        <footer> 
+        <footer>
            <div class="line"></div>
            <p>Copyright 2019 - BABA GORA TRANSPORT</p>
         </footer>
-        </section> 
+        </section>
         <script src="{% static 'detail/jquery.min.js' %}"></script>
         <script src="{% static 'detail/script.js' %}"></script>
     </body>

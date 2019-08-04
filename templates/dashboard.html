@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>BABA GORA TRANSPORT</title>
+	<title>BABA GORA TRANSPORT | DASHBOARD</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="{% static 'dash/images/icons/favicon.ico' %}"/>
@@ -91,6 +91,7 @@
 										<th class="cell100 column6">Source</th>
 										<th class="cell100 column6">Destination</th>
 										<th class="cell100 column6">Status</th>
+
 									</tr>
 								</thead>
 								<tbody>
@@ -107,6 +108,7 @@
 										<td class="cell100 column6">{{r.source}}</td>
 										<td class="cell100 column6">{{r.destination}}</td>
 										<td class="cell100 column6">{{r.status}}</td>
+
 									</tr>
 									{% endfor %}
 								{% endif %}
@@ -163,7 +165,10 @@
 					</div>
 			</div>
 			<h1>&nbsp;</h1>
-			<h2 style="color: #fff;">Total Sale: {{total_sale}} <br> Total Expenses: {{total_expense}} </h2>
+
+	<h2 style="color: #fff;">Total Sale: {{total_sale}} <br> Total Expenses: {{total_expense}}  <br> Total Profit: {{profit}} <br> Total Weight: {{total_weight}} <br> Total Receiving Weight: {{total_rec_weight}} <br> Total Shortage: {{total_shortage}}</h2>
+
+
 		</div>
 		<p style="text-align: center;font-size: 16px"><a href="/admin"> ADMIN</a></p>
 	</div>
