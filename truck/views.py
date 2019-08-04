@@ -70,6 +70,9 @@ def dashboard(request):
 
         for r in road:
             total_sale = total_sale+r.total_cost
+            total_weight = total_weight+r.total_weight
+            total_rec_weight = total_rec_weight+r.rec_weight
+            total_shortage = total_shortage+r.shortage
         for e in expenses:
             total_expense = total_expense+e.expense
         profit = total_sale-total_expense
@@ -89,7 +92,8 @@ def dashboard(request):
         for e in expenses:
             total_expense = total_expense+e.expense
         profit = total_sale-total_expense
-        context = {"road":road, "expenses":expenses, "total_sale":total_sale, "total_expense": total_expense, "profit":profit}
+        context = {"road": road, "expenses": expenses, "total_sale": total_sale, "total_weight": total_weight,
+                   "total_rec_weight": total_rec_weight, "total_shortage": total_shortage, "total_expense": total_expense, "profit": profit}
         return render(request, "dashboard.html", context)
 
 @login_required
