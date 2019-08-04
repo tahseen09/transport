@@ -35,11 +35,14 @@ def dashboard(request):
                 expenses = Expenses.objects.all().filter(expense_date__gte = start_date, expense_date__lte = end_date, truck = truck)
                 for r in road:
                     total_sale = total_sale+r.total_cost
+                    total_weight = total_weight+r.total_weight
+                    total_rec_weight = total_rec_weight+r.rec_weight
+                    total_shortage = total_shortage+r.shortage
                 for e in expenses:
                     total_expense = total_expense+e.expense
                 profit = total_sale-total_expense
 
-                context = {"road":road, "total_sale":total_sale, "expenses":expenses, "total_expense":total_expense, "profit":profit}
+                context = {"road":road, "total_sale":total_sale, "expenses":expenses, "total_expense":total_expense,"total_weight":total_weight, "total_rec_weight":total_rec_weight,"total_shortage":total_shortage, "profit":profit}
                 return render(request, "detail.html", context)
             else:
                 road = Trip.objects.all().filter(trip_start_date__gte = start_date, trip_start_date__lte = end_date)
@@ -70,7 +73,8 @@ def dashboard(request):
         for e in expenses:
             total_expense = total_expense+e.expense
         profit = total_sale-total_expense
-        context = {"road":road, "expenses":expenses ,"truck":truck, "start_date":start_date, "end_date":end_date, "total_sale":total_sale, "total_expense":total_expense, "profit":profit}
+        context = {"road": road, "expenses": expenses, "truck": truck, "start_date": start_date, "end_date": end_date, "total_sale": total_sale,
+                   "total_expense": total_expense, "total_weight": total_weight, "total_rec_weight": total_rec_weight, "total_shortage": total_shortage, "profit": profit}
         return render(request,"dashboard.html",context)
 
     else:
@@ -79,6 +83,9 @@ def dashboard(request):
         expenses = Expenses.objects.all().filter(expense_date = today)
         for r in road:
             total_sale = total_sale+r.total_cost
+            total_weight = total_weight+r.total_weight
+            total_rec_weight = total_rec_weight+r.rec_weight
+            total_shortage = total_shortage+r.shortage
         for e in expenses:
             total_expense = total_expense+e.expense
         profit = total_sale-total_expense
@@ -137,8 +144,8 @@ def new_trip(request):
             e = Expenses(expense=advance, comment="Driver Advance", expense_date=trip_start_date, truck=truck)
             e.save()
         msg = "Your new trip has been created"
-        context = {"msg":msg}
-        return render(request,"new.html",context)
+        context = {"msg":msg,"truck":truck, "sl_no":sl_no, "trip_start_date":trip_start_date, "source":source, "total_weight":total_weight, "cost":cost, "rec_weight":rec_weight }
+        return render(request,"print.html",context)
     else:
         return render(request,"new.html")
 
