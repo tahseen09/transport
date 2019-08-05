@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>BABA GORA TRANSPORT</title>
+    <title>BABA GORA TRANSPORT </title>
     <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap&subset=latin-ext" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -107,99 +107,53 @@
 <body>
     <div class="invoice-box">
         <table cellpadding="0" cellspacing="0">
-            
-            
-            <tr class="information">
+            <tr class="top">
                 <td colspan="2">
                     <table>
                         <tr>
-                            
-                            <td>
-                                <!---
-                                    truck = request.POST.get("truck").upper()
-        trip_start_date = request.POST.get("trip_start_date")
-        source = request.POST.get("source")
-        destination = request.POST.get("destination")
-        total_weight = request.POST.get("total_weight")
-        cost = request.POST.get("cost")
-        rec_weight = request.POST.get("rec_weight")
-        mop = request.POST.get("mop")
-        shortage = request.POST.get("shortage")
-        less = request.POST.get("less")
-        status = request.POST.get("status")
-        diesel = request.POST.get("diesel")
-        advance = request.POST.get("advance")
-        sl_no = request.POST.get("sl_no")
-        tp_pass = request.POST.get("pass")
-                                -->
-                            
-                                <strong> truck: </strong>:{{truck}} <br>
-                               <strong> sl:</strong>: {{sl_no}} <br>
-                                <strong> date: </strong>:{{trip_start_date}} <br>
-                               <strong> source:</strong>: {{source}} <br>
-                                <strong> des: </strong>:{{destination}} <br>
-                               <strong> weight:</strong>: {{total_weight}} <br>
-                                <strong> cost: </strong>:{{cost}} <br>
-                               <strong> rec_weight:</strong>: {{rec_weight}} <br>
-                                
-                            
+                            <td class="title">
+                                <h2 style="font-family: 'Courgette', cursive; color: red; font-style: bold;" >BABA GORA TRANSPORT</h2>
                             </td>
+                            
+                        
                         </tr>
                     </table>
                 </td>
             </tr>
-            
-            
-            
-            <tr class="heading">
-                <td>
-                    Days
-                </td>
-                
-                <td>
-                    Price/Day
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td>
+                               
+                             <ol>
+                                <p>SL no: {{sl_no}}</p>
+                                <p>TRUCK NUMBER : {{truck}}</p>
+                                <p>Date : {{trip_start_date}}</p>
+                             <p>Source : {{souce}}</p>
+                             <p>Destination : {{destination}}</p>
+                             <p>Total Weight : {{total_weight}}</p>
+                             <p>Cost/Ton : {{cost}}</p>
+                             <p>Receive Weight : {{rec_weight}}</p>
+                             <p>T.P & PASS NO. : {{tp_pass}}</p>
+                             <p>Shortage : {{shortage}}</p>
+                             <p>Less : {{less}}</p>
+                             <p>Status : {{status}}</p>
+                             <p>Diesel : {{diesel}}</p>
+                             <p>Advance : {{advance}}</p>
+                             <p>Mode of Payment : {{mop}}</p>
+                             <p>Total Amount : {{total_sale}}</p>
+                             </ol>
+
+                            </td>
+                            
+                          
+                        </tr>
+                    </table>
                 </td>
             </tr>
-        
-            <tr class="item">
-                <td>
-                    {{days}}
-                </td>
-                
-                <td>
-                    {{day_price}}
-                </td>
-            
-            
-            </tr>
-            
-           
-            
-            
-<tr class="heading">
-        <td>
-            Payment Method 
-        </td>
-        
-        <td>
-            Total
-        </td>
-</tr>
-    
-<tr ="details">
-        <td>
-            {{payment_type}}
-        </td>
-            
-        <td>
-           {{total_price}}
-        </td>
-    
-</tr>
         </table>
-        <p style="text-align: center; font-size: 24px;">Thank You, Visit Again</p>
-        <img src="static/images/paid.png" style="width: 100%; max-width: 150px;">
-        <h6>Manager - {{manager}} </h6>
+        <p style="text-align: center; font-size: 24px;">BABA GORA TRANSPORT</p>
         <h1>&nbsp;</h1>
       <button type="button" class="btn btn-default d-print-none" onclick="window.print()">Print</button>
     </div> 
