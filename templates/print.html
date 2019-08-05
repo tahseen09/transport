@@ -20,84 +20,84 @@
         font-family: 'Roboto Slab', serif;
         color: #555;
     }
-    
+
     .invoice-box table {
         width: 100%;
         line-height: inherit;
         text-align: left;
 
     }
-    
+
     .invoice-box table td {
         padding: 5px;
         vertical-align: top;
     }
-    
+
     .invoice-box table tr td:nth-child(2) {
         text-align: right;
     }
-    
+
     .invoice-box table tr.top table td {
         padding-bottom: 20px;
     }
-    
+
     .invoice-box table tr.top table td.title {
         font-size: 45px;
         line-height: 45px;
         color: #333;
     }
-    
+
     .invoice-box table tr.information table td {
         padding-bottom: 40px;
     }
-    
+
     .invoice-box table tr.heading td {
         background: #eee;
         border-bottom: 1px solid #ddd;
         font-weight: bold;
     }
-    
+
     .invoice-box table tr.details td {
         padding-bottom: 20px;
     }
-    
+
     .invoice-box table tr.item td{
         border-bottom: 1px solid #eee;
     }
-    
+
     .invoice-box table tr.item.last td {
         border-bottom: none;
     }
-    
+
     .invoice-box table tr.total td:nth-child(2) {
         border-top: 2px solid #eee;
         font-weight: bold;
     }
-    
+
     @media only screen and (max-width: 600px) {
         .invoice-box table tr.top table td {
             width: 100%;
             display: block;
             text-align: center;
         }
-        
+
         .invoice-box table tr.information table td {
             width: 100%;
             display: block;
             text-align: center;
         }
     }
-    
+
     /** RTL **/
     .rtl {
         direction: rtl;
         font-family: 'Roboto Slab', serif;
     }
-    
+
     .rtl table {
         text-align: right;
     }
-    
+
     .rtl table tr td:nth-child(2) {
         text-align: left;
     }
@@ -114,8 +114,8 @@
                             <td class="title">
                                 <h2 style="font-family: 'Courgette', cursive; color: red; font-style: bold;" >BABA GORA TRANSPORT</h2>
                             </td>
-                            
-                        
+
+
                         </tr>
                     </table>
                 </td>
@@ -125,29 +125,29 @@
                     <table>
                         <tr>
                             <td>
-                               
+
                              <ol>
                                 <p>SL no: {{sl_no}}</p>
                                 <p>TRUCK NUMBER : {{truck}}</p>
                                 <p>Date : {{trip_start_date}}</p>
-                             <p>Source : {{souce}}</p>
-                             <p>Destination : {{destination}}</p>
-                             <p>Total Weight : {{total_weight}}</p>
-                             <p>Cost/Ton : {{cost}}</p>
-                             <p>Receive Weight : {{rec_weight}}</p>
-                             <p>T.P & PASS NO. : {{tp_pass}}</p>
-                             <p>Shortage : {{shortage}}</p>
-                             <p>Less : {{less}}</p>
-                             <p>Status : {{status}}</p>
-                             <p>Diesel : {{diesel}}</p>
-                             <p>Advance : {{advance}}</p>
-                             <p>Mode of Payment : {{mop}}</p>
-                             <p>Total Amount : {{total_sale}}</p>
+                                <p>Source : {{souce}}</p>
+                                <p>Destination : {{destination}}</p>
+                                <p>Total Weight : {{total_weight}}</p>
+                                <p>Cost/Ton : {{cost}}</p>
+                                <p>Receive Weight : {{rec_weight}}</p>
+                                <p>T.P & PASS NO. : {{tp_pass}}</p>
+                                <p>Shortage : {{shortage}}</p>
+                                <p>Less : {{less}}</p>
+                                <p>Status : {{status}}</p>
+                                <p>Diesel : {{diesel}}</p>
+                                <p>Advance : {{advance}}</p>
+                                <p>Mode of Payment : {{mop}}</p>
+                                <p>Total Amount : {{total_cost}}</p>
                              </ol>
 
                             </td>
-                            
-                          
+
+
                         </tr>
                     </table>
                 </td>
@@ -156,6 +156,6 @@
         <p style="text-align: center; font-size: 24px;">BABA GORA TRANSPORT</p>
         <h1>&nbsp;</h1>
       <button type="button" class="btn btn-default d-print-none" onclick="window.print()">Print</button>
-    </div> 
+    </div>
 </body>
 </html>
