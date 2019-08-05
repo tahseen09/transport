@@ -151,7 +151,7 @@ def new_trip(request):
             e = Expenses(expense=advance, comment="Driver Advance", expense_date=trip_start_date, truck=truck)
             e.save()
         msg = "Your new trip has been created"
-        context = {"msg":msg,"truck":truck, "sl_no":sl_no, "trip_start_date":trip_start_date, "source":source, "destination":destination, total_weight":total_weight, "cost":cost, "rec_weight":rec_weight, "tp_pass":tp_pass, "shortage":shortage, "less":less, "status":status, "diesel":diesel, "advance":advance, "mop":mop, "total_cost":total_cost}
+        context = {"msg":msg,"truck":truck, "sl_no":sl_no, "trip_start_date":trip_start_date, "source":source, "destination":destination, "total_weight":total_weight, "cost":cost, "rec_weight":rec_weight, "tp_pass":tp_pass, "shortage":shortage, "less":less, "status":status, "diesel":diesel, "advance":advance, "mop":mop, "total_cost":total_cost}
         return render(request,"print.html",context)
     else:
         return render(request,"new.html")
