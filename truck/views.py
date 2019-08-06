@@ -101,6 +101,9 @@ def dashboard(request):
 
 @login_required
 def new_trip(request):
+    advance=0.0
+    diesel=0.0
+    less=0.0
     if request.method == "POST":
         truck = request.POST.get("truck").upper()
         trip_start_date = request.POST.get("trip_start_date")
@@ -150,8 +153,12 @@ def new_trip(request):
         if float(advance)>0.0:
             e = Expenses(expense=advance, comment="Driver Advance", expense_date=trip_start_date, truck=truck)
             e.save()
+        expense = diesel+advance+less
+        profit = total_cost-expense
+
         msg = "Your new trip has been created"
-        context = {"msg":msg,"truck":truck, "sl_no":sl_no, "trip_start_date":trip_start_date, "source":source, "destination":destination, "total_weight":total_weight, "cost":cost, "rec_weight":rec_weight, "tp_pass":tp_pass, "shortage":shortage, "less":less, "status":status, "diesel":diesel, "advance":advance, "mop":mop, "total_cost":total_cost}
+        trip_start_date = trip_start_date[8:]+'/'+trip_start_date[5:7]+'/'+trip_start_date[0:4]
+        context = {"msg":msg,"truck":truck, "sl_no":sl_no, "trip_start_date":trip_start_date, "source":source, "destination":destination, "total_weight":total_weight, "cost":cost, "rec_weight":rec_weight, "tp_pass":tp_pass, "shortage":shortage, "less":less, "status":status, "diesel":diesel, "advance":advance, "mop":mop, "total_cost":total_cost, "profit":profit, "expense":expense}
         return render(request,"print.html",context)
     else:
         return render(request,"new.html")
