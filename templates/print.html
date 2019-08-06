@@ -112,10 +112,10 @@
                     <table>
                         <tr>
                             <td class="title">
-                               <a href="{% url 'dashboard' %}" <h2 style="font-family: 'Courgette', cursive; color: red; font-style: bold;" >BABA GORA TRANSPORT</h2> </a>
+                               <a href={% url 'dashboard' %} ><h2 style="font-family: 'Courgette', cursive; color: red; font-style: bold;" >BABA GORA TRANSPORT</h2> </a>
+                               <h4>&nbsp;</h4>
+                               <a href={% url 'new' %}> <h4 style="font-family: 'Courgette', cursive; color: red; font-style: bold;" class="d-print-none">NEW TRIP</h4> </a>
                             </td>
-
-
                         </tr>
                     </table>
                 </td>
@@ -143,6 +143,8 @@
                                 <p>Advance : {{advance}}</p>
                                 <p>Mode of Payment : {{mop}}</p>
                                 <p>Total Amount : {{total_cost}}</p>
+                                <p>Expense: {{expense}}</p>
+                                <p>Profit: {{profit}} </p>
                              </ol>
 
                             </td>
