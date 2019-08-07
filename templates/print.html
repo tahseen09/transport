@@ -1,103 +1,173 @@
 {% load static %}
-
 <!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>BABA GORA TRANSPORT </title>
-    <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap&subset=latin-ext" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <title>BABA GORA TRANSPORT</title>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <style>
+
+   .info {
+        max-width: 100%;
+        margin: auto;
+        padding: 10px;
+        border: 1px solid #eee;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+        font-size: 16px;
+        line-height: 24px;
+        font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        color: #555;
+    }
+    
+    .info table {
+        width: 100%;
+        line-height: inherit;
+        text-align: left;
+    }
+
+   .info table th{
+       border: 1px solid black;
+       border-collapse: collapse;
+   }
+    
+    .info table td {
+        padding: 5px;
+        vertical-align: top;
+        border: 1px solid black;
+       border-collapse: collapse;
+    }
+    
+    .info table tr td:nth-child(2) {
+        text-align: center;
+    }
+    .info table tr td:nth-child(3) {
+        text-align: right;
+    }
+    
+    
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     .invoice-box {
-        max-width: 800px;
+        max-width: 100%;
         margin: auto;
         padding: 30px;
         border: 1px solid #eee;
         box-shadow: 0 0 10px rgba(0, 0, 0, .15);
         font-size: 16px;
         line-height: 24px;
-        font-family: 'Roboto Slab', serif;
+        font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
         color: #555;
     }
-
+    
     .invoice-box table {
         width: 100%;
         line-height: inherit;
         text-align: left;
-
     }
 
+   
+    
     .invoice-box table td {
         padding: 5px;
         vertical-align: top;
     }
-
+    
     .invoice-box table tr td:nth-child(2) {
+        text-align: center;
+    }
+    .invoice-box table tr td:nth-child(3) {
         text-align: right;
     }
-
+    
     .invoice-box table tr.top table td {
         padding-bottom: 20px;
     }
-
+    
     .invoice-box table tr.top table td.title {
         font-size: 45px;
         line-height: 45px;
         color: #333;
     }
-
+    
     .invoice-box table tr.information table td {
         padding-bottom: 40px;
     }
-
+    
     .invoice-box table tr.heading td {
         background: #eee;
         border-bottom: 1px solid #ddd;
         font-weight: bold;
     }
-
+    
     .invoice-box table tr.details td {
         padding-bottom: 20px;
     }
-
+    
     .invoice-box table tr.item td{
         border-bottom: 1px solid #eee;
     }
-
+    
     .invoice-box table tr.item.last td {
         border-bottom: none;
     }
-
+    
     .invoice-box table tr.total td:nth-child(2) {
         border-top: 2px solid #eee;
         font-weight: bold;
     }
-
+    
     @media only screen and (max-width: 600px) {
         .invoice-box table tr.top table td {
             width: 100%;
             display: block;
             text-align: center;
         }
-
+        
         .invoice-box table tr.information table td {
             width: 100%;
             display: block;
             text-align: center;
         }
+        .invoice-box table {
+            width: 90%;
+            display: block;
+            text-align: center;
+        }
     }
-
+    
     /** RTL **/
     .rtl {
         direction: rtl;
-        font-family: 'Roboto Slab', serif;
+        font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
     }
-
+    
     .rtl table {
         text-align: right;
     }
-
+    
     .rtl table tr td:nth-child(2) {
         text-align: left;
     }
@@ -111,53 +181,158 @@
                 <td colspan="2">
                     <table>
                         <tr>
-                            <td class="title">
-                               <a href={% url 'dashboard' %} ><h2 style="font-family: 'Courgette', cursive; color: red; font-style: bold;" >BABA GORA TRANSPORT</h2> </a>
+                           <a href={% url 'dashboard' %} ><h3 style="color: red; font-style: bold;" >BABA GORA TRANSPORT</h3> </a>
                                <h4>&nbsp;</h4>
-                               <a href={% url 'new' %}> <h4 style="font-family: 'Courgette', cursive; color: red; font-style: bold;" class="d-print-none">NEW TRIP</h4> </a>
+                               <a href={% url 'new' %}> <h4 style=" color: red; font-style: bold;" class="d-print-none">NEW TRIP</h4> </a>
+                            <td style="font-weight: bold;">
+                                SL. NO :  {{sl_no}}
                             </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr class="information">
-                <td colspan="2">
-                    <table>
-                        <tr>
-                            <td>
-
-                             <ol>
-                                <p>SL no: {{sl_no}}</p>
-                                <p>TRUCK NUMBER : {{truck}}</p>
-                                <p>Date : {{trip_start_date}}</p>
-                                <p>Source : {{source}}</p>
-                                <p>Destination : {{destination}}</p>
-                                <p>Total Weight : {{total_weight}}</p>
-                                <p>Cost/Ton : {{cost}}</p>
-                                <p>Receive Weight : {{rec_weight}}</p>
-                                <p>T.P & PASS NO. : {{tp_pass}}</p>
-                                <p>Shortage : {{shortage}}</p>
-                                <p>Less : {{less}}</p>
-                                <p>Status : {{status}}</p>
-                                <p>Diesel : {{diesel}}</p>
-                                <p>Advance : {{advance}}</p>
-                                <p>Mode of Payment : {{mop}}</p>
-                                <p>Total Amount : {{total_cost}}</p>
-                                <p>Expense: {{expense}}</p>
-                                <p>Profit: {{profit}} </p>
-                             </ol>
-
-                            </td>
-
-
+                                <td style="font-weight: bold;">
+                                   TRUCK NO :  {{truck}}
+                                </td>
+                                <td style="font-weight: bold;">
+                                    DATE :  {{trip_start_date}}
+                                </td>
+                                
+                           
                         </tr>
                     </table>
                 </td>
             </tr>
         </table>
-        <p style="text-align: center; font-size: 24px;">BABA GORA TRANSPORT</p>
-        <h1>&nbsp;</h1>
-      <button type="button" class="btn btn-default d-print-none" onclick="window.print()">Print</button>
+
+        
+        
     </div>
+
+    <div class="info">
+            
+    
+            <table>
+                <tbody style="text-align: center;">
+                    
+                <tr>
+                    
+                    <th>
+                        Source
+                    </th>
+                    <th>
+                        Destination
+                    </th>
+                    <th>
+                        Total<br>Weight
+                    </th>
+                    <th>
+                        Cost/Ton
+                    </th>
+    
+                    <th>
+                        Receive<br>Weight
+                    </th>
+    
+                    <th>
+                        T.P & PASS NO.
+                    </th>
+    
+                    
+                </tr>
+                <tr style="text-align: center;">
+                    
+                        <td>
+                                {{source}}
+                            </td>
+                            <td>
+                                    {{destination}}
+                                </td>
+                                <td>
+                                        {{total_weight}}
+                                    </td>
+                                    <td>
+                                            {{cost}}
+                                        </td>
+
+                                        <td>
+                                                {{rec_weight}}
+                                            </td>
+
+                                            <td>
+                                                    {{tp_pass}}
+                                                </td>
+
+                </tr>
+            </tbody>
+            </table>
+            <h1>&nbsp;</h1>
+            <h1>&nbsp;</h1>
+            <table style="padding-top: 200px; text-align: center;">
+                <tr>
+                        <th>
+                                Shortage
+                            </th>
+                            <th>
+                                Less
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                            <th>
+                                Diesel
+                            </th>
+                            <th>
+                                Advance
+                            </th>
+                            <th>
+                                Mode of<br>Payment
+                            </th>
+                            <th>
+                                Total<br>Amount
+                            </th>
+                            <th>
+                                Expense
+                            </th>
+                            <th>
+                                Profit
+                            </th>
+                </tr>
+            </tr>
+            <tr>
+                <td>
+                      {{shortage}}
+                </td>
+                <td>
+                        {{less}}
+                </td>
+                <td>
+                        {{status}}
+                    </td>
+                    <td>
+                            {{disel}}
+                        </td>
+                        <td>
+                                {{advance}}
+                            </td>
+                            <td>
+                                    {{mop}}
+                                </td>
+                                <td>
+                                        {{total_cost}}
+                                    </td>
+
+                                    <td>
+                                            {{expense}}
+                                        </td>
+
+                                        <td>
+                                                {{profit}}
+                                            </td>
+                                            
+            </tr>
+            </table>
+            <h1>&nbsp;</h1>
+                  <button type="button" class="btn btn-default d-print-none" onclick="window.print()">Print</button>
+
+            <p style="text-align: center; font-size: 18px;">&copy;BABA GORA TRANSPORT</p>
+        <h1>&nbsp;</h1>
+        </div>
 </body>
 </html>

@@ -12,74 +12,82 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CPoppins:400,500,700,800,900%7CRoboto:100,300,400,400i,500,700">
     <link type="text/css" rel="stylesheet" href="{% static 'trip/assets/css/style.css' %}">
     <link rel="stylesheet" type="text/css" id="style_sheet" href="{% static 'trip/assets/css/skins/default.css' %}">
+    <link data-require="bootstrap-css@3.3.1" data-semver="3.3.1" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 </head>
 <body id="top" class="bg-grea-5">
 <div class="page_loader"></div>
 <div class="login-5">
     <div class="container">
-        <div class="row login-box">
-            <div class="col-lg-5 col-md-12 col-pad-0 bg-img none-992">
-                <h3>BABA GORA TRANSPORT</h3>
+        <div class="login-box">
+            <div class="col-lg-5 col-md-12 col-pad-0 bg-img none-992" style="padding-bottom: 50px;">
+                <h3  style="background-color: #000 ; height: 120px; padding-bottom: -40px;">BABA GORA TRANSPORT</h3>
                 <a href="{% url 'update' %}" class="btn-outline">UPDATE TRIP</a>
-                <p>&nbsp;</p>
+                <!-- <p>&nbsp;</p> -->
                  <a href="{% url 'expenses' %}" class="btn-outline">EXPENSES</a>
-                <p>&nbsp;</p>
+                <!-- <p>&nbsp;</p> -->
                  <a href="{% url 'dashboard' %}" class="btn-outline">HOME</a>
             </div>
-            <div class="col-lg-7 col-md-12 col-pad-0 align-self-center">
-                <div class="login-inner-form">
-                    <div class="details">
-                        <h3>NEW TRIP DETAILS</h3>
-                        <form action="" method="POST">
+            <!-- <div class="col-lg-7 col-md-12 col-pad-0 align-self-center"> -->
+                <div class="login-inner-form" >
+                    <div class="details" >
+                        <h3 style="color: black;">NEW TRIP DETAILS</h3>
+                        <form action="" method="POST" >
+
                             {% csrf_token %}
                             <div class="form-group" >
-                               SL. NO: <input type="number" name="sl_no" class="input-text" placeholder="SL NO" required style="text-transform: uppercase; ">
-                            </div>
+                               SL. NO: &nbsp;<input type="number" name="sl_no"  placeholder="SL NO" required style="text-transform: uppercase;height:  40px; ">
+                            </div>&nbsp;&nbsp;
                              <div class="form-group">
-                              TRIP START DATE:<input type="date" name="trip_start_date" class="input-text" placeholder="TRIP START DATE" required>
-                            </div>
+                              TRIP START DATE:&nbsp;<input type="date" name="trip_start_date" placeholder="TRIP START DATE" required>
+                            </div>&nbsp;&nbsp;
                             <div class="form-group">
-                               TRUCK NUMBER: <input type="text" name="truck" class="input-text" placeholder="TRUCK NUMBER" required style="text-transform: uppercase;">
+                               TRUCK NUMBER:&nbsp; <input type="text" name="truck"  placeholder="TRUCK NUMBER" required style="text-transform: uppercase;height:  40px;">
                             </div>
                             
-                            
+                            <p>&nbsp;</p>
                              <div class="form-group">
-                               FROM: <input type="text" name="source" class="input-text" placeholder="FROM" style="text-transform: uppercase;" required>
-                            </div>
+                               FROM: &nbsp;<input type="text" name="source"  placeholder="FROM" style="text-transform: uppercase;height:  40px;" required>
+                            </div>&nbsp;&nbsp;
                              <div class="form-group">
-                               TO:  <input type="text" name="destination" class="input-text" placeholder="TO" style="text-transform: uppercase;" required>
-                            </div>
+                               TO: &nbsp; <input type="text" name="destination"  placeholder="TO" style="text-transform: uppercase;height:  40px;" required>
+                            </div>&nbsp;&nbsp;
                              <div class="form-group">
-                                T.P & PASS NO.<input type="text" name="pass" class="input-text" placeholder="T.P & PASS NO." style="text-transform: uppercase;" required="">
-                            </div>
+                                T.P & PASS NO.&nbsp;<input type="text" name="pass"  placeholder="T.P & PASS NO." style="text-transform: uppercase;height:  40px;" required>
+                            </div>&nbsp;&nbsp;
+                            <p>&nbsp;</p>
                              <div class="form-group">
-                               TOTAL WT: <input type="number" step="0.01" name="total_weight" class="input-text" placeholder="TOTAL WEIGHT IN MT" style="text-transform: uppercase;" required>
-                            </div>
+                               TOTAL WT: &nbsp;<input type="number" step="0.01" name="total_weight"  placeholder="TOTAL WEIGHT IN MT" style="text-transform: uppercase;height:  40px;" required>
+                            </div>&nbsp;&nbsp;
                              <div class="form-group">
-                                RECIEVING WT: <input type="number" step="0.01" name="rec_weight" class="input-text" placeholder="RECIEVING WEIGHT IN MT" style="text-transform: uppercase;" required >
-                            </div>
+                                RECIEVING WT:&nbsp;&nbsp; <input type="number" step="0.01" name="rec_weight"  placeholder="RECIEVING WEIGHT IN MT" style="text-transform: uppercase;height:  40px;" required >
+                            </div>&nbsp;&nbsp;
                             <div class="form-group">
-                               RATE IN MT <input type="number" step="0.01" name="cost" class="input-text" placeholder="RATE IN MT" style="text-transform: uppercase;" required >
-                            </div>
+                               RATE IN MT &nbsp;<input type="number" step="0.01" name="cost"  placeholder="RATE IN MT" style="text-transform: uppercase;height:  40px;" required >
+                            </div>&nbsp;&nbsp;
+                            <p>&nbsp;</p>
                              <div class="form-group">
-                               DIESEL: <input type="text" name="diesel" class="input-text" step="0.01" placeholder="DIESEL" style="text-transform: uppercase;" required >
+                               DIESEL: &nbsp;<input type="text" name="diesel"  step="0.01" placeholder="DIESEL" style="text-transform: uppercase;height:  40px;" required >
                             </div>
+
                             <div class="form-group">
-                                SHORTAGE: <input type="number"  name="shortage" step="0.01"  class="input-text" placeholder="SHORTAGE" style="text-transform: uppercase;" required >
-                            </div>
+                                SHORTAGE:&nbsp; <input type="number"  name="shortage" step="0.01"   placeholder="SHORTAGE" style="text-transform: uppercase;height:  40px;" required >
+                            </div>&nbsp;&nbsp;
                             <div class="form-group">
-                               LESS: <input type="number" name="less" class="input-text" step="0.01" placeholder="LESS" style="text-transform: uppercase;" required >
-                            </div>
+                               LESS:&nbsp; <input type="number" name="less"  step="0.01" placeholder="LESS" style="text-transform: uppercase; height:  40px;" required >
+                            </div>&nbsp;&nbsp;
+                            <p>&nbsp;</p>
                             <div class="form-group">
-                                ADVANCE: <input type="number" name="advance" class="input-text" step="0.01" placeholder="ADVANCE" style="text-transform: uppercase;" required >
-                            </div>
+                                ADVANCE:&nbsp; <input type="number" name="advance"  step="0.01" placeholder="ADVANCE" style="text-transform: uppercase;height:  40px;" required >
+                            </div>&nbsp;&nbsp;
                             <div class="form-group">
-                                STATUS: <input type="text" name="status" class="input-text" placeholder="STATUS" style="text-transform: uppercase;" required >
-                            </div>
+                                STATUS: &nbsp;<input type="text" name="status"  placeholder="STATUS" style="text-transform: uppercase;height:  40px;" required >
+                            </div>&nbsp;&nbsp;
                             <div class="form-group">
-                                MODE OF PAYMENT: <input type="text" name="mop" class="input-text" placeholder="MODE OF PAYMENT" style="text-transform: uppercase;" required 
+                                MODE OF PAYMENT: &nbsp;<input type="text" name="mop"  placeholder="MODE OF PAYMENT" style="text-transform: uppercase;height:  40px;" required 
                                 >
-                            </div>
+                            </div>&nbsp;&nbsp;
+                            <p>&nbsp;</p>
                             <div class="form-group">
                                 <button type="submit" class="btn-md btn-theme">SAVE</button>
                             </div>
@@ -88,7 +96,7 @@
                         <p>{{msg}}</p>
                     {% endif %}
                     </div>
-                </div>
+                <!-- </div> -->
             </div>
         </div>
     </div>
