@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-import datetime
+from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from .models import Trip, Expenses
 
@@ -22,7 +22,7 @@ def dashboard(request):
         truck = request.POST.get("truck").upper()
 
         if not (start_date or end_date or truck):
-            today = datetime.datetime.now().strftime('%Y-%m-%d')
+            today = datetime.now().strftime('%Y-%m-%d')
             road = Trip.objects.all().filter(trip_start_date = today )
             expenses = Expenses.objects.all().filter(expense_date = today)
             for r in road:
@@ -68,7 +68,7 @@ def dashboard(request):
                 expenses = Expenses.objects.all().filter(expense_date__lte=end_date)
 
         else:
-            road = Trip.objects.all().filter(truck=truck)
+            road = Trip.objects.all().filter(truck=truck).sort('truck')
             expenses = Expenses.objects.all().filter(truck = truck)
 
         for r in road:
@@ -84,7 +84,7 @@ def dashboard(request):
         return render(request,"dashboard.html",context)
 
     else:
-        today = datetime.datetime.now().strftime('%Y-%m-%d')
+        today = datetime.now().strftime('%Y-%m-%d')
         road = Trip.objects.all().filter(trip_start_date = today )
         expenses = Expenses.objects.all().filter(expense_date = today)
         for r in road:
@@ -107,19 +107,19 @@ def new_trip(request):
     if request.method == "POST":
         truck = request.POST.get("truck").upper()
         trip_start_date = request.POST.get("trip_start_date")
-        source = request.POST.get("source")
-        destination = request.POST.get("destination")
+        source = request.POST.get("source").upper()
+        destination = request.POST.get("destination").upper()
         total_weight = request.POST.get("total_weight")
         cost = request.POST.get("cost")
         rec_weight = request.POST.get("rec_weight")
-        mop = request.POST.get("mop")
+        mop = request.POST.get("mop").upper()
         shortage = request.POST.get("shortage")
         less = request.POST.get("less")
-        status = request.POST.get("status")
+        status = request.POST.get("status").upper()
         diesel = request.POST.get("diesel")
         advance = request.POST.get("advance")
         sl_no = request.POST.get("sl_no")
-        tp_pass = request.POST.get("pass")
+        tp_pass = request.POST.get("pass").upper()
 
         if total_weight and ('.' not in total_weight):
             total_weight = int(total_weight)*1.0
@@ -137,10 +137,6 @@ def new_trip(request):
             diesel = int(diesel)*1.0
 
         total_cost = (float(rec_weight)*float(cost))
-        """if Trip.objects.all().filter(truck=truck, trip_complete=False).exists():
-            msg = "The truck with truck number:"+truck+" has not completed it's previous trip. Please update the details if required."
-            context = {"msg":msg}
-            return render(request, "new.html", context)"""
         #save the data
         t = Trip(truck=truck, trip_start_date=trip_start_date, source=source, destination=destination, total_weight=total_weight, cost_per_ton=cost, total_cost=total_cost, rec_weight=rec_weight, shortage=shortage, sl_no=sl_no, tp_pass=tp_pass, status=status, mop=mop)
         t.save()
