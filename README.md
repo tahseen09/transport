@@ -9,6 +9,11 @@
 * #### HTML/CSS
 * #### JavaScript
 
+### Database
+* #### SQLite
+  ###### It is used(which comes bundled with Django). This is only used for development purpose and a more powerful datatbase should be used in production.
+
+
 ## How to Use?
 * Create a python3 virtual environment, navigate to project directory on terminal and install django using the command
   `pip install django` <br>
